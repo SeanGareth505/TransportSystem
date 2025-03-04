@@ -3,11 +3,13 @@ import { Documentation } from './documentation/documentation';
 import { Crud } from './crud/crud';
 import { Empty } from './empty/empty';
 import { ClientsComponent } from './clients/clients.component';
+import { DriversComponent } from './drivers/drivers.component';
 
 export default [
     { path: 'documentation', component: Documentation },
     { path: 'crud', component: Crud },
     { path: 'empty', component: Empty },
     { path: 'clients', component: ClientsComponent },
+    { path: 'drivers', component: DriversComponent },
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;

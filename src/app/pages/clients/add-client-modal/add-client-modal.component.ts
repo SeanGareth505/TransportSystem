@@ -18,8 +18,10 @@ import { CommonModule } from '@angular/common';
 })
 export class AddClientModalComponent implements AfterViewInit {
   @Output() clientAdded = new EventEmitter<any>();
+  @Output() closeDialog: EventEmitter<boolean> = new EventEmitter();
+
   @ViewChild('locationInput', { static: false }) locationInput!: ElementRef;
-  display: boolean = false;
+
   clientForm: FormGroup;
   autocomplete!: google.maps.places.Autocomplete;
 
@@ -29,6 +31,7 @@ export class AddClientModalComponent implements AfterViewInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       location: ['', Validators.required],
+      idNumber: ['', Validators.required],
       city: [''],
       suburb: [''],
       country: [''],
@@ -124,11 +127,11 @@ export class AddClientModalComponent implements AfterViewInit {
   onSubmit() {
     if (this.clientForm.valid) {
       this.clientAdded.emit(this.clientForm.value);
-      this.display = false;
+      this.closeDialog.emit();
     }
   }
-
+  
   onCancel() {
-    this.display = false;
+    this.closeDialog.emit();
   }
 }

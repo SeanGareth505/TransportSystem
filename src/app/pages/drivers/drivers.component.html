@@ -1,0 +1,87 @@
+<p-toolbar>
+    <ng-template #start>
+        <p-button label="New" icon="pi pi-plus" class="mr-2" (onClick)="showAddDriverModal()" />
+        <p-button severity="danger" label="Delete" icon="pi pi-trash" outlined (onClick)="deleteSelectedDrivers()" [disabled]="!selectedDrivers || !selectedDrivers.length" />
+    </ng-template>
+
+    <ng-template #end>
+        <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" 
+            auto customUpload class="mr-2 inline-block" [chooseButtonProps]="{ severity: 'secondary' }" />
+        <p-button label="Export" icon="pi pi-upload" severity="secondary" (click)="exportCSV()" />
+    </ng-template>
+</p-toolbar>
+
+<p-table
+    #dt
+    [value]="filteredDrivers"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="['name', 'phone', 'baseLocation']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [(selection)]="selectedDrivers"
+    [rowHover]="true"
+    [exportHeader]="'customExportHeader'"
+    dataKey="idNumber"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+>
+    <ng-template #caption>
+        <div class="flex items-center justify-between">
+            <h5 class="m-0">Manage Drivers</h5>
+            <p-iconfield>
+                <p-inputicon styleClass="pi pi-search" />
+                <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search..." />
+            </p-iconfield>
+        </div>
+    </ng-template>
+    
+    <ng-template #header>
+        <tr>
+            <th style="width: 3rem">
+                <p-tableHeaderCheckbox />
+            </th>
+            <th pSortableColumn="idNumber" style="min-width:16rem">
+                ID Number
+                <p-sortIcon field="idNumber" />
+            </th>
+            <th pSortableColumn="name" style="min-width:16rem">
+                Name
+                <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="phone" style="min-width:16rem">
+                Phone
+                <p-sortIcon field="phone" />
+            </th>
+            <th pSortableColumn="baseLocation" style="min-width:16rem">
+                Base Location
+                <p-sortIcon field="baseLocation" />
+            </th>
+            <th style="min-width: 12rem">Actions</th>
+        </tr>
+    </ng-template>
+
+    <ng-template #body let-driver>
+        <tr>
+            <td style="width: 3rem">
+                <p-tableCheckbox [value]="driver" />
+            </td>
+            <td style="min-width: 16rem">{{ driver.idNumber }}</td>
+            <td style="min-width: 16rem">{{ driver.name }}</td>
+            <td style="min-width: 16rem">{{ driver.phone }}</td>
+            <td style="min-width: 16rem">{{ driver.baseLocation }}</td>
+            <td>
+                <p-button icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="editDriver(driver)"></p-button>
+                <p-button icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" severity="danger" (click)="deleteDriver(driver)"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table> <!-- Closing the table properly -->
+
+<!-- Confirmation Dialog -->
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+
+<!-- Add Driver Modal -->
+<p-dialog header="Add Driver" [(visible)]="addDriverModalVisible" [modal]="true" [closable]="true" [style]="{width: '50vw', zIndex: 10}">
+    <add-driver-modal (driverAdded)="onDriverAdded($event)" (closeDialog)="addDriverModalVisible = false"></add-driver-modal>
+</p-dialog>

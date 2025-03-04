@@ -61,7 +61,7 @@ export class AppMenu {
             {
                 label: 'Driver MANAGEMENT',
                 items: [
-                    { label: 'Driver List', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
+                    { label: 'Driver List', icon: 'pi pi-fw pi-id-card', routerLink: ['/pages/drivers'] },
 
                 ]
             },

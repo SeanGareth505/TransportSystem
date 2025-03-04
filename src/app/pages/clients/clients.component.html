@@ -1,4 +1,3 @@
-
 <p-toolbar>
     <ng-template #start>
         <p-button label="New" icon="pi pi-plus" class="mr-2" (onClick)="showAddClientModal()" />
@@ -20,8 +19,9 @@
     [globalFilterFields]="['name', 'email', 'phone', 'status', 'location']"
     [tableStyle]="{ 'min-width': '75rem' }"
     [(selection)]="selectedClients"
+    [rowsPerPageOptions]="[10, 25, 50]"
     [rowHover]="true"
-    dataKey="id"
+    dataKey="idNumber"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [showCurrentPageReport]="true"
 >
@@ -30,7 +30,7 @@
             <h5 class="m-0">Manage Clients</h5>
             <p-iconfield>
                 <p-inputicon styleClass="pi pi-search" />
-                <input pInputText type="text" (input)="dt.filterGlobal($event.target, 'contains')" placeholder="Search..." />
+                <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search..." />
             </p-iconfield>
         </div>
     </ng-template>
@@ -40,9 +40,9 @@
             <th style="width: 3rem">
                 <p-tableHeaderCheckbox />
             </th>
-            <th pSortableColumn="id" style="min-width:16rem">
-                ID
-                <p-sortIcon field="id" />
+            <th pSortableColumn="idNumber" style="min-width:16rem">
+                ID Number
+                <p-sortIcon field="idNumber" />
             </th>
             <th pSortableColumn="name" style="min-width:16rem">
                 Name
@@ -73,7 +73,7 @@
             <td style="width: 3rem">
                 <p-tableCheckbox [value]="client" />
             </td>
-            <td style="min-width: 16rem">{{ client.id }}</td>
+            <td style="min-width: 16rem">{{ client.idNumber }}</td>
             <td style="min-width: 16rem">{{ client.name }}</td>
             <td style="min-width: 16rem">{{ client.email }}</td>
             <td style="min-width: 16rem">{{ client.phone }}</td>
@@ -83,7 +83,7 @@
             <td style="min-width: 16rem">{{ client.location }}</td>
             <td>
                 <p-button icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="editClient(client)"></p-button>
-                <p-button icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" (click)="deleteClient(client)"></p-button>
+                <p-button icon="pi pi-trash" class="p-button-rounded p-button-text p-button-danger" severity="danger" (click)="deleteClient(client)"></p-button>
             </td>
         </tr>
     </ng-template>
@@ -94,5 +94,5 @@
 
 <!-- Add Client Modal -->
 <p-dialog header="Add Client" [(visible)]="addClientModalVisible" [modal]="true" [closable]="true" [style]="{width: '50vw'}">
-    <add-client-modal (clientAdded)="onClientAdded($event)"></add-client-modal>
+    <add-client-modal (clientAdded)="onClientAdded($event)" (closeDialog)="addClientModalVisible = false"></add-client-modal>
 </p-dialog>
