@@ -55,6 +55,10 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
                             </div>
                             <p-button label="Sign In" styleClass="w-full" routerLink="/"></p-button>
                         </div>
+                        <div class="text-center mt-4">
+                            <span class="text-muted-color">Don't have an account?</span>
+                            <p-button label="Sign Up" styleClass="ml-2" routerLink="/auth/signup"></p-button>
+                        </div>
                     </div>
                 </div>
             </div>
