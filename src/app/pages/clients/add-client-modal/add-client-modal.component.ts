@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddClientModalComponent implements AfterViewInit {
   @Output() clientAdded = new EventEmitter<any>();
-  @ViewChild('location', { static: false }) locationInput!: ElementRef;
+  @ViewChild('locationInput', { static: false }) locationInput!: ElementRef;
   display: boolean = false;
   clientForm: FormGroup;
   autocomplete!: google.maps.places.Autocomplete;
@@ -31,40 +31,14 @@ export class AddClientModalComponent implements AfterViewInit {
       location: ['', Validators.required],
       city: [''],
       suburb: [''],
-      country: ['']
+      country: [''],
+      latitude: [''],
+      longitude: ['']
     });
-
-    this.onOpen();
   }
 
   ngAfterViewInit() {
-    this.waitForGoogleMaps()
-      .then(() => {
-        this.initAutocomplete();
-      })
-      .catch(err => console.error("❌ Google Maps API Error:", err));
-  }
-
-  async waitForGoogleMaps(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      const interval = setInterval(() => {
-        if (window.google && window.google.maps && window.google.maps.places) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 100);
-
-      setTimeout(() => {
-        clearInterval(interval);
-        reject(new Error('❌ Google Maps API failed to load.'));
-      }, 5000);
-    });
-  }
-
-  onOpen() {
-    setTimeout(() => {
-      this.initAutocomplete();
-    }, 500);
+    this.initAutocomplete();
   }
 
   initAutocomplete() {
@@ -80,15 +54,10 @@ export class AddClientModalComponent implements AfterViewInit {
 
     console.log("✅ Initializing Google Places Autocomplete...");
 
-    // Assign autocomplete
-    this.autocomplete = new google.maps.places.Autocomplete(this.locationInput.nativeElement, {
-      types: ["geocode"],
-      fields: ["place_id", "formatted_address", "geometry", "address_components"],
-    });
+    // ✅ Initialize Google Places Autocomplete
+    this.autocomplete = new google.maps.places.Autocomplete(this.locationInput.nativeElement);
 
-    console.log("🔍 this.autocomplete assigned:", this.autocomplete);
-
-    // Ensure dropdown stays on top of modal
+    // ✅ Ensure dropdown stays on top of modal
     setTimeout(() => {
       const pacContainer = document.querySelector(".pac-container");
       if (pacContainer) {
@@ -97,27 +66,16 @@ export class AddClientModalComponent implements AfterViewInit {
       }
     }, 500);
 
+    // ✅ Listen for place selection (works for both Enter key & Click)
     this.autocomplete.addListener("place_changed", () => {
       this.ngZone.run(() => {
-        let place = this.autocomplete.getPlace();
-
-        if (!place || !place.geometry || !place.address_components) {
-          console.warn("⚠ Google Autocomplete returned an empty place. Retrying...");
-          setTimeout(() => {
-            place = this.autocomplete.getPlace();
-            console.log("📍 Selected Place (Second Attempt):", JSON.stringify(place, null, 2));
-            this.processPlace(place);
-          }, 500);
-        } else {
-          console.log("📍 Selected Place:", JSON.stringify(place, null, 2));
-          this.processPlace(place);
-        }
+        this.processPlace(this.autocomplete.getPlace());
       });
     });
   }
 
-  private processPlace(place: google.maps.places.PlaceResult) {
-    if (!place || !place.address_components) {
+  private processPlace(place: google.maps.places.PlaceResult | null) {
+    if (!place || !place.geometry || !place.address_components) {
       console.error("❌ Still unable to retrieve a valid place:", place);
       return;
     }
@@ -125,17 +83,18 @@ export class AddClientModalComponent implements AfterViewInit {
     this.fillInAddress(place);
   }
 
-
-
   fillInAddress(place: google.maps.places.PlaceResult) {
     let city = "";
     let suburb = "";
     let country = "";
     let formattedAddress = place.formatted_address || '';
+    let latitude = place.geometry?.location?.lat() || '';
+    let longitude = place.geometry?.location?.lng() || '';
 
     if (!place.address_components) {
       return;
     }
+
     for (const component of place.address_components) {
       const addressType = component.types[0];
       switch (addressType) {
@@ -156,7 +115,9 @@ export class AddClientModalComponent implements AfterViewInit {
       location: formattedAddress,
       city: city || '',
       suburb: suburb || '',
-      country: country || ''
+      country: country || '',
+      latitude: latitude,
+      longitude: longitude
     });
   }
 
