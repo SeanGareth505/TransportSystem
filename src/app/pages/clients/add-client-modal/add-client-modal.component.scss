@@ -1,0 +1,5 @@
+:host ::ng-deep .pac-container {
+    z-index: 100000 !important; /* Ensure it appears above the modal */
+    position: absolute !important;
+    display: block !important;
+  }

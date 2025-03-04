@@ -1,0 +1,57 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="p-fluid grid formgrid gap-4">
+    <div class="field col-12 md:col-6">
+      <label for="name" class="font-semibold">Name</label>
+      <input id="name" type="text" pInputText formControlName="name" class="p-inputtext-lg w-full" />
+      <small *ngIf="clientForm.controls['name'].invalid && clientForm.controls['name'].touched" class="p-error">
+        Name is required.
+      </small>
+    </div>
+  
+    <div class="field col-12 md:col-6">
+      <label for="email" class="font-semibold">Email</label>
+      <input id="email" type="email" pInputText formControlName="email" class="p-inputtext-lg w-full" />
+      <small *ngIf="clientForm.controls['email'].invalid && clientForm.controls['email'].touched" class="p-error">
+        Valid email is required.
+      </small>
+    </div>
+  
+    <div class="field col-12 md:col-6">
+      <label for="phone" class="font-semibold">Phone</label>
+      <input id="phone" type="tel" pInputText formControlName="phone" class="p-inputtext-lg w-full" />
+      <small *ngIf="clientForm.controls['phone'].invalid && clientForm.controls['phone'].touched" class="p-error">
+        Phone is required.
+      </small>
+    </div>
+  
+    <div class="field col-12 md:col-6">
+      <label for="location" class="font-semibold">Location</label>
+      <input id="location" #location type="text" pInputText formControlName="location"
+             class="p-inputtext-lg w-full" (focus)="onOpen()" autocomplete="off"/>
+      <small *ngIf="clientForm.controls['location'].invalid && clientForm.controls['location'].touched"
+             class="p-error">
+        Location is required.
+      </small>
+    </div>
+  
+    <div class="field col-12 md:col-6">
+      <label for="city" class="font-semibold">City</label>
+      <input id="city" type="text" pInputText formControlName="city" class="p-inputtext-lg w-full" readonly />
+    </div>
+  
+    <div class="field col-12 md:col-6">
+      <label for="suburb" class="font-semibold">Suburb</label>
+      <input id="suburb" type="text" pInputText formControlName="suburb" class="p-inputtext-lg w-full" readonly />
+    </div>
+  
+    <div class="field col-12 md:col-6">
+      <label for="country" class="font-semibold">Country</label>
+      <input id="country" type="text" pInputText formControlName="country" class="p-inputtext-lg w-full" readonly />
+    </div>
+  
+    <div class="col-12 flex justify-content-end gap-3 mt-3">
+      <button type="button" pButton label="Cancel" class="p-button-outlined p-button-secondary"
+        (click)="onCancel()"></button>
+      <button type="submit" pButton label="Save" class="p-button-primary" [disabled]="clientForm.invalid"></button>
+    </div>
+  </form>
+  

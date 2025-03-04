@@ -54,7 +54,7 @@ export class AppMenu {
             {
                 label: 'Client MANAGEMENT',
                 items: [
-                    { label: 'Client List', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
+                    { label: 'Client List', icon: 'pi pi-fw pi-id-card', routerLink: ['/pages/clients'] },
 
                 ]
             },
