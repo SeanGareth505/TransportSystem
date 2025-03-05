@@ -1,0 +1,60 @@
+<app-floating-configurator />
+
+<div  style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="wrapper" [class.s-signup]="isSignUp()">
+      <!-- Login Form -->
+      <div class="form login">
+        <h2 class="title">Welcome Back</h2>
+        <label>
+          <span>Email</span>
+          <input class="placeholder" type="email" [(ngModel)]="loginData().email">
+        </label>
+        <label>
+          <span>Password</span>
+          <input class="placeholder" type="password" [(ngModel)]="loginData().password">
+        </label>
+        <button (click)="validateInputs()" class="submit-btn" type="button" routerLink="">Login</button>
+        <p class="forgot-password">Forgot your password?</p>
+      </div>
+  
+      <!-- Sliding Panel -->
+      <div class="slide-panel">
+        <div class="img">
+          <div class="img-text m-up">
+            <h2>New Here?</h2>
+            <p>Create an account to stay updated!</p>
+          </div>
+          <div class="img-text m-in">
+            <h2>Already have an account?</h2>
+            <p>Just log in and continue where you left off.</p>
+          </div>
+          <div class="img-btn" (click)="toggleSignUp()">
+            <span *ngIf="!isSignUp()">Sign Up</span>
+            <span *ngIf="isSignUp()">Login</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sign Up Form -->
+      <div class="form signup">
+        <h2 class="title">Create Account</h2>
+        <label>
+          <span>Name</span>
+          <input type="text" [(ngModel)]="signupData().name" class="placeholder">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" [(ngModel)]="signupData().email" class="placeholder">
+        </label>
+        <label>
+          <span>Password</span>
+          <input class="placeholder" type="password" [(ngModel)]="signupData().password">
+        </label>
+        <label>
+          <span>Confirm Password</span>
+          <input type="password" [(ngModel)]="signupData().confirmPassword" class="placeholder">
+        </label>
+        <button (click)="validateInputs()" type="button" class="submit-btn">Sign Up</button>
+      </div>
+    </div>
+  </div>
