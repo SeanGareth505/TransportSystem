@@ -46,7 +46,12 @@ export class AppMenu {
                     {
                         label: 'Track Drivers',
                         icon: 'pi pi-fw pi-bookmark',
-                        routerLink: ['pages/map']
+                        routerLink: ['map']
+                    },
+                    {
+                        label: 'Track Confirmation',
+                        icon: 'pi pi-fw pi-bookmark',
+                        routerLink: ['pages/track']
                     }
                 ],
                 

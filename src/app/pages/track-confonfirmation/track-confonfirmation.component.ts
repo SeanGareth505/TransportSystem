@@ -1,53 +1,47 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FirebaseService } from '../../service/firebase.service';
 
 @Component({
   selector: 'app-track-confonfirmation',
   templateUrl: './track-confonfirmation.component.html',
-  styleUrl: './track-confonfirmation.component.scss'
+  styleUrls: ['./track-confonfirmation.component.scss']
 })
-export class TrackConfonfirmationComponent {
-  trackingStarted = false;
-  isLoading = false;
-  driverId: string = '';
+export class TrackConfonfirmationComponent implements OnInit {
+  userId: string = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private firebaseService: FirebaseService
+  ) {}
 
   ngOnInit() {
-    console.log("📡 Checking if tracking is active...");
-
-    navigator.serviceWorker?.addEventListener("message", (event) => {
-      if (event.data?.type === "TRACKING_STARTED") {
-        console.log("✅ Tracking already active, redirecting...");
-        this.router.navigate(['/thank-you']);
-      }
+    this.route.params.subscribe(params => {
+      // this.userId = params['id'];
+      this.userId = '12';
     });
   }
 
   startTracking() {
-    this.driverId = "driver_123"; // ✅ Using a static ID for testing
-    this.isLoading = true;
-
-    console.log(`🚗 Using Dummy Driver ID: ${this.driverId}`);
-
-    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-      console.log("📡 Sending START_TRACKING to Service Worker...");
-      navigator.serviceWorker.controller.postMessage({
-        type: "START_TRACKING",
-        driverId: this.driverId,
-      });
-
-      navigator.serviceWorker.addEventListener("message", (event) => {
-        if (event.data?.type === "TRACKING_STARTED") {
-          console.log("📡 Dummy Tracking Started!");
-          this.trackingStarted = true;
-          this.isLoading = false;
-          this.router.navigate(['/thank-you']);
-        }
-      });
-    } else {
-      console.error("❌ Service Worker not available.");
-      this.isLoading = false;
+    if (!this.userId) {
+      console.error('User ID is missing!');
+      return;
     }
+
+    this.firebaseService.confirmTracking(this.userId);
+    
+    if ('geolocation' in navigator) {
+      navigator.geolocation.watchPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          this.firebaseService.updateLocation(this.userId, latitude, longitude);
+        },
+        (error) => console.error('Location error:', error),
+        { enableHighAccuracy: true, maximumAge: 0 }
+      );
+    }
+
+    this.router.navigate(['pages/thank-you']);
   }
 }

@@ -26,28 +26,15 @@ export class TrackingMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     console.log("🛠 Initializing TrackingMapComponent...");
-    this.loadGoogleMapsAPI().then(() => {
-      console.log("✅ Google Maps API loaded successfully.");
-      this.startTracking();
-    }).catch(error => {
-      console.error("❌ Google Maps API failed to load.", error);
-    });
+    this.loadGoogleMapsAPI()
+      .then(() => {
+        console.log("✅ Google Maps API loaded successfully.");
+        this.startTracking();
+      })
+      .catch(error => console.error("❌ Google Maps API failed to load.", error));
 
-    // ✅ Subscribe to Firebase data
-    console.log("📡 Subscribing to Firebase data...");
-    this.driversSubscription = this.firebaseService.getDrivers().subscribe({
-      next: (data) => {
-        console.log("📡 Firebase data received:", data);
-        this.ngZone.run(() => {
-          this.drivers = Object.values(data);
-          this.updateMarkers();
-          this.cdr.detectChanges();
-        });
-      },
-      error: (error) => {
-        console.error("❌ Firebase Error:", error);
-      }
-    });
+    // ✅ Subscribe to Firebase drivers
+    this.subscribeToDrivers();
   }
 
   ngAfterViewInit() {
@@ -60,6 +47,21 @@ export class TrackingMapComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     console.log("🛠 Destroying TrackingMapComponent...");
     this.unsubscribeDrivers();
+  }
+
+  private subscribeToDrivers() {
+    console.log("📡 Subscribing to Firebase data...");
+    this.driversSubscription = this.firebaseService.getDrivers().subscribe({
+      next: (data) => {
+        console.log("📡 Firebase data received:", data);
+        this.ngZone.run(() => {
+          this.drivers = Object.values(data);
+          this.updateMarkers();
+          this.cdr.detectChanges();
+        });
+      },
+      error: (error) => console.error("❌ Firebase Error:", error)
+    });
   }
 
   private unsubscribeDrivers() {
@@ -103,7 +105,7 @@ export class TrackingMapComponent implements OnInit, AfterViewInit, OnDestroy {
     this.addMarkers();
   }
 
-  clearMarkers() {
+  private clearMarkers() {
     this.markers.forEach(marker => marker.setMap(null));
     this.markers = [];
     console.log("🚫 All markers cleared.");
@@ -126,7 +128,7 @@ export class TrackingMapComponent implements OnInit, AfterViewInit, OnDestroy {
       const marker = new google.maps.Marker({
         position: driver,
         map: this.map,
-        title: `Driver Location ${index}`,
+        title: `Driver ${index + 1}`,
       });
       this.markers.push(marker);
     });
@@ -186,5 +188,4 @@ export class TrackingMapComponent implements OnInit, AfterViewInit, OnDestroy {
       document.head.appendChild(script);
     });
   }
-  
 }
