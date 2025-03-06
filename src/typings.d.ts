@@ -1,8 +1,7 @@
+import '@types/googlemaps';
+
 declare global {
-    interface Window {
-      google: typeof google;
-    }
+  interface Window {
+    google: typeof google;
   }
-  
-  declare const google: any;
-  
+}

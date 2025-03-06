@@ -162,3 +162,10 @@ export class ClientsComponent {
     // this.addClientModalVisible = false;
   }
 }
+
+@Component({
+  selector: 'app-some-standalone',
+  template: `<h1>Standalone Component</h1>`,
+  standalone: true
+})
+export class SomeStandaloneComponent { }

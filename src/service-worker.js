@@ -1,46 +1,54 @@
-self.addEventListener("install", (event) => {
-  console.log("⚠️ Fake Service Worker Installed in Development Mode.");
-  event.waitUntil(self.skipWaiting());
-});
-
-self.addEventListener("activate", (event) => {
-  console.log("⚠️ Fake Service Worker Activated.");
-  event.waitUntil(self.clients.claim());
-});
-
-self.addEventListener("fetch", (event) => {
-  console.log("🔄 Service Worker Intercepted:", event.request.url);
-});
-
-// ✅ Listen for Messages from the Main App
 self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SET_FIREBASE_URL") {
+    self.firebaseURL = event.data.firebaseURL;
+    console.log("🔗 Firebase URL set in Service Worker:", self.firebaseURL);
+  }
+
   if (event.data && event.data.type === "UPDATE_LOCATION") {
     console.log("📍 Received Location Update:", event.data.coords);
     syncLocationToFirebase(event.data.coords);
   }
 });
 
-// ✅ Function to Send Data to Firebase
-async function syncLocationToFirebase(coords) {
-  const firebaseURL = "https://YOUR_FIREBASE_URL/drivers/driver_123.json";
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith("/@vite/")) return;
+});
 
+// ✅ Initialize Firebase URL to avoid missing values
+self.firebaseURL = "https://transport-51a63-default-rtdb.europe-west1.firebasedatabase.app";
+
+async function syncLocationToFirebase(coords) {
   try {
+    console.log("🌍 Using Firebase URL:", self.firebaseURL); // ✅ Debug log
+
+    if (!self.firebaseURL) {
+      console.warn("⚠️ Firebase URL is missing, using default.");
+      self.firebaseURL = "https://transport-51a63-default-rtdb.europe-west1.firebasedatabase.app";
+    }
+
+    const firebaseURL = `${self.firebaseURL}/drivers/driver_123.json`;
+    console.log("🚀 Syncing location to Firebase:", firebaseURL, coords);
+
     const response = await fetch(firebaseURL, {
       method: "PATCH",
       body: JSON.stringify({
-        lat: coords.latitude,
-        lng: coords.longitude,
+        lat: coords.lat,
+        lng: coords.lng,
         timestamp: Date.now(),
       }),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache",
+      },
     });
 
-    if (response.ok) {
-      console.log("✅ Location Synced to Firebase:", coords);
-    } else {
-      console.error("❌ Failed to Sync Location to Firebase");
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status} - ${response.statusText}`);
     }
+
+    console.log("✅ Location Synced Successfully:", await response.json());
   } catch (error) {
-    console.error("❌ Error Syncing Location:", error);
+    console.error("❌ Failed to Sync Location:", error);
   }
 }

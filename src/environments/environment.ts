@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   googleMapsApiKey: 'AIzaSyDsvovnTyI8PZprGo66-aaWBDW_rzInMCg',
-
+  firebaseDatabaseURL: "https://transport-51a63-default-rtdb.europe-west1.firebasedatabase.app",
   firebase: {
     apiKey: "AIzaSyBKGn1NR-0Q8Dzo7WznePFgk21qrGwEfTU",
     authDomain: "transport-51a63.firebaseapp.com",

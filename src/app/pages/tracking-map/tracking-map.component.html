@@ -1,0 +1,22 @@
+<google-map
+  height="400px"
+  width="100%"
+  [center]="center"
+  [zoom]="zoom">
+    <map-marker *ngFor="let driver of drivers; index as i" 
+                [position]="driver" 
+                >
+    </map-marker>
+</google-map>
+
+<div class="driver-list">
+  <h3>Drivers</h3>
+  <ul>
+    <li *ngFor="let driver of drivers; let i = index" (click)="navigateToDriver(i)">
+      Driver {{ i + 1 }}: {{ driver.lat }}, {{ driver.lng }}
+    </li>
+  </ul>
+</div>
+
+<button (click)="startTracking()">Start Tracking</button>
+<button (click)="centerMap()">Center Map</button>
