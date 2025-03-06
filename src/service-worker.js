@@ -1,10 +1,10 @@
 self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SET_FIREBASE_URL") {
-    self.firebaseURL = event.data.firebaseURL;
+  if (event.data?.type === "SET_FIREBASE_URL") {
+    self.firebaseURL = event.data.firebaseURL || "https://transport-51a63-default-rtdb.europe-west1.firebasedatabase.app";
     console.log("🔗 Firebase URL set in Service Worker:", self.firebaseURL);
   }
 
-  if (event.data && event.data.type === "UPDATE_LOCATION") {
+  if (event.data?.type === "UPDATE_LOCATION") {
     console.log("📍 Received Location Update:", event.data.coords);
     syncLocationToFirebase(event.data.coords);
   }
@@ -15,13 +15,8 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname.startsWith("/@vite/")) return;
 });
 
-// ✅ Initialize Firebase URL to avoid missing values
-self.firebaseURL = "https://transport-51a63-default-rtdb.europe-west1.firebasedatabase.app";
-
 async function syncLocationToFirebase(coords) {
   try {
-    console.log("🌍 Using Firebase URL:", self.firebaseURL); // ✅ Debug log
-
     if (!self.firebaseURL) {
       console.warn("⚠️ Firebase URL is missing, using default.");
       self.firebaseURL = "https://transport-51a63-default-rtdb.europe-west1.firebasedatabase.app";

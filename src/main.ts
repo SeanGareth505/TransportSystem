@@ -1,4 +1,4 @@
-import { enableProdMode, isDevMode } from '@angular/core';
+import { enableProdMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { environment } from './environments/environment';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ if (environment.production) {
   enableProdMode();
 }
 
+// ✅ Load Google Maps Before Bootstrapping
 async function loadGoogleMapsAPI(): Promise<void> {
   if (window.google && window.google.maps) {
     console.log("✅ Google Maps API is already loaded.");
@@ -17,15 +18,13 @@ async function loadGoogleMapsAPI(): Promise<void> {
 
   console.log("📡 Loading Google Maps API...");
 
-  const script = document.createElement("script");
-  script.id = "google-maps-script";
-  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDsvovnTyI8PZprGo66-aaWBDW_rzInMCg&libraries=places&v=beta`;
-  script.async = true;
-  script.defer = true;
-
-  document.head.appendChild(script);
-
   return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.id = "google-maps-script";
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDsvovnTyI8PZprGo66-aaWBDW_rzInMCg&libraries=places&v=beta`;
+    script.async = true;
+    script.defer = true;
+
     script.onload = async () => {
       console.log("✅ Google Maps API loaded successfully.");
       if (google.maps.importLibrary) {
@@ -38,10 +37,10 @@ async function loadGoogleMapsAPI(): Promise<void> {
       console.error("❌ Google Maps API failed to load.");
       reject(new Error("Google Maps API failed to load."));
     };
+
+    document.head.appendChild(script);
   });
 }
-
-
 
 // ✅ Function to register Service Worker
 function registerServiceWorker() {
@@ -61,9 +60,9 @@ function registerServiceWorker() {
   }
 }
 
-// ✅ Start Application
+// ✅ Load Google Maps First, Then Bootstrap Angular
 Promise.all([
-  loadGoogleMapsAPI(), // Load Google Maps
+  loadGoogleMapsAPI(), // Ensure Google Maps loads first
   registerServiceWorker() // Register Service Worker independently
 ])
   .then(() => {
