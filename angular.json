@@ -20,6 +20,7 @@
                         "outputPath": "docs",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
+                        "baseHref": "/TransportSystem/",
                         "polyfills": [
                             "zone.js"
                         ],
@@ -55,7 +56,7 @@
                             ],
                             "outputHashing": "all",
                             "serviceWorker": "ngsw-config.json",
-                            "baseHref": "/REPO_NAME/"
+                            "baseHref": "/TransportSystem/"
                         },
                         "development": {
                             "optimization": false,
