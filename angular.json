@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:application",
                     "options": {
-                        "outputPath": "docs",  
+                        "outputPath": "docs",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
                         "polyfills": [
@@ -54,8 +54,7 @@
                                 }
                             ],
                             "outputHashing": "all",
-                            "serviceWorker": "ngsw-config.json",
-                            "index": "src/index.html"
+                            "serviceWorker": "ngsw-config.json"
                         },
                         "development": {
                             "optimization": false,
@@ -108,6 +107,6 @@
         }
     },
     "cli": {
-      "analytics": false
+        "analytics": false
     }
 }
