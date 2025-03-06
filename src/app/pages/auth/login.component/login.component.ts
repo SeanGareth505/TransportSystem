@@ -8,11 +8,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
+import { getDatabase, Database, ref, set } from '@angular/fire/database';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, FormsModule, AppFloatingConfigurator,ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator],
+  imports: [CommonModule, FormsModule, AppFloatingConfigurator, ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -30,6 +31,15 @@ export class AuthComponent {
     password: '',
     confirmPassword: ''
   });
+
+  constructor(private db: Database) {}
+
+  ngOnInit() {
+    const testRef = ref(this.db, 'test');
+    set(testRef, { message: 'Hello Firebase!' }).then(() => {
+      console.log('Data added to Firebase!');
+    }).catch((err: any) => console.error('Error:', err));
+  }
 
   toggleSignUp(): void {
     this.isSignUp.set(!this.isSignUp());

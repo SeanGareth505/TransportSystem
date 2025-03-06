@@ -1,14 +1,15 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, isDevMode } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app.config';
-import { AppComponent } from './app.component';
+import { provideServiceWorker } from '@angular/service-worker';
 import { environment } from './environments/environment';
+import { AppComponent } from './app.component';
+import { appConfig } from './app.config';
 
 if (environment.production) {
   enableProdMode();
 }
 
-// Function to dynamically load Google Maps API
+// ✅ Function to dynamically load Google Maps API
 function loadGoogleMapsAPI(retryCount: number = 3): Promise<void> {
   return new Promise((resolve, reject) => {
     if (window.google && window.google.maps) {
@@ -50,7 +51,7 @@ function loadGoogleMapsAPI(retryCount: number = 3): Promise<void> {
   });
 }
 
-// Load Google Maps API and bootstrap the Angular application
+// ✅ Load Google Maps API and Bootstrap the Angular Application
 loadGoogleMapsAPI()
   .then(() => {
     console.log("🚀 Bootstrapping Angular Application...");

@@ -29,7 +29,10 @@
                             {
                                 "glob": "**/*",
                                 "input": "public"
-                            }
+                            },
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/service-worker.js"
                         ],
                         "styles": [
                             "src/styles.scss"
@@ -50,7 +53,8 @@
                                     "maximumError": "4kb"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "outputHashing": "all",
+                            "serviceWorker": "ngsw-config.json"
                         },
                         "development": {
                             "optimization": false,
@@ -88,7 +92,10 @@
                             {
                                 "glob": "**/*",
                                 "input": "public"
-                            }
+                            },
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/service-worker.js"
                         ],
                         "styles": [
                             "src/styles.scss"
