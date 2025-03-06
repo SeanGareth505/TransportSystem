@@ -18,8 +18,8 @@ export class TrackConfonfirmationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      // this.userId = params['id'];
-      this.userId = '12';
+      this.userId = params['id'];
+      // this.userId = '12';
     });
   }
 

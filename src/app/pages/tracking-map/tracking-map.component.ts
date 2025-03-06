@@ -116,25 +116,98 @@ export class TrackingMapComponent implements OnInit, AfterViewInit, OnDestroy {
       console.error("❌ Google Map instance is not available.");
       return;
     }
-
-    this.clearMarkers();
-
+  
     if (this.drivers.length === 0) {
       console.warn("⚠️ No drivers available to add markers.");
       return;
     }
-
+  
     this.drivers.forEach((driver, index) => {
-      const marker = new google.maps.Marker({
-        position: driver,
-        map: this.map,
-        title: `Driver ${index + 1}`,
-      });
-      this.markers.push(marker);
+      const existingMarker = this.markers[index];
+  
+      if (existingMarker) {
+        // 🔥 Animate marker to new position instead of instantly moving it
+        this.animateMarker(existingMarker, driver);
+      } else {
+        // 🆕 Create a new marker if it doesn't exist
+        const newMarker = new google.maps.Marker({
+          position: driver,
+          map: this.map,
+          title: `Driver ${index + 1}`,
+        });
+        this.markers.push(newMarker);
+      }
     });
-
-    console.log("📍 Markers added:", this.markers.length);
+  
+    console.log("📍 Markers updated:", this.markers.length);
   }
+  
+  private animateMarker(marker: google.maps.Marker, newPosition: google.maps.LatLngLiteral) {
+    const start = marker.getPosition(); 
+    if (!start) return;
+  
+    const startLat = start.lat();
+    const startLng = start.lng();
+    const endLat = newPosition.lat;
+    const endLng = newPosition.lng;
+  
+    const animationDuration = 1000; // 1 second animation
+    const frameRate = 60; // Smooth transition (60 FPS)
+    const totalFrames = (animationDuration / 1000) * frameRate;
+    
+    let frame = 0;
+  
+    function move() {
+      if (frame >= totalFrames) return;
+  
+      const lat = startLat + (endLat - startLat) * (frame / totalFrames);
+      const lng = startLng + (endLng - startLng) * (frame / totalFrames);
+  
+      marker.setPosition(new google.maps.LatLng(lat, lng));
+  
+      frame++;
+      requestAnimationFrame(move);
+    }
+  
+    move(); // Start animation
+  }
+  
+  moveTestMarker() {
+    if (!this.map) {
+      console.error('❌ Map instance is not initialized.');
+      return;
+    }
+  
+    if (this.drivers.length === 0) {
+      console.warn('⚠️ No drivers available for testing.');
+      return;
+    }
+  
+    // 🔥 Move the first driver in the list
+    const testDriverIndex = 0;
+    const existingMarker = this.markers[testDriverIndex];
+  
+    if (!existingMarker) {
+      console.error("❌ No marker found for test driver.");
+      return;
+    }
+  
+    // 🎯 Generate a new random nearby location
+    const oldPosition = existingMarker.getPosition();
+    if (!oldPosition) return;
+  
+    const latOffset = (Math.random() - 0.5) * 0.01; // Move up/down a little
+    const lngOffset = (Math.random() - 0.5) * 0.01; // Move left/right a little
+  
+    const newPosition = {
+      lat: oldPosition.lat() + latOffset,
+      lng: oldPosition.lng() + lngOffset,
+    };
+  
+    console.log("🚀 Moving test marker to:", newPosition);
+    this.animateMarker(existingMarker, newPosition);
+  }
+  
 
   navigateToDriver(index: number) {
     if (!this.map) {

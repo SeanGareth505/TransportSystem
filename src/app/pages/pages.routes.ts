@@ -12,9 +12,11 @@ export default [
     { path: 'documentation', component: Documentation },
     { path: 'crud', component: Crud },
     { path: 'empty', component: Empty },
+    { path: 'track/:id', component: TrackConfonfirmationComponent },
     { path: 'track', component: TrackConfonfirmationComponent },
     { path: 'thank-you', component: ThankYouTrackerComponent },
     { path: 'map', component: TrackingMapComponent },
+    
     { path: 'clients', component: ClientsComponent },
     { path: 'drivers', component: DriversComponent },
     { path: '**', redirectTo: '/notfound' }
