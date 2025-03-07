@@ -18,6 +18,7 @@ async function syncLocationToFirebase() {
         headers: { "Content-Type": "application/json" }
       });
 
+      // Remove the synced location from IndexedDB
       const deleteTx = db.transaction("locations", "readwrite");
       deleteTx.objectStore("locations").delete(location.timestamp);
       await deleteTx.done;
@@ -26,3 +27,7 @@ async function syncLocationToFirebase() {
     console.error("Failed to sync location:", error);
   }
 }
+
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
+});
