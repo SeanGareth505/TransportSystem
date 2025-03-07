@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1741355781218,
+  "timestamp": 1741356943617,
   "index": "/TransportSystem/index.html",
   "assetGroups": [
     {
@@ -36,7 +36,7 @@
       },
       "urls": [
         "/TransportSystem/assets/demo/flags/flags_responsive.png",
-        "/TransportSystem/assets/screenshots/image.png",
+        "/TransportSystem/assets/screenshots/resized_tracking_image.png",
         "/TransportSystem/icons/icon-128x128.png",
         "/TransportSystem/icons/icon-144x144.png",
         "/TransportSystem/icons/icon-152x152.png",
@@ -71,7 +71,7 @@
   ],
   "hashTable": {
     "/TransportSystem/assets/demo/flags/flags_responsive.png": "c1c4ac0f8369b4aa4b4c22a052e472b8d5f479c6",
-    "/TransportSystem/assets/screenshots/image.png": "aae430252eb1ae1939d802f0fa68d1b7c2c2d498",
+    "/TransportSystem/assets/screenshots/resized_tracking_image.png": "17444ee63aeb95cce09407c32239202a1f5cf660",
     "/TransportSystem/chunk-45L6GOJK.js": "160bfd3796348e7204c872b792d29162480444a5",
     "/TransportSystem/chunk-GMWKAPIX.js": "d0e6ad63da9221fcc2e3119d3bf90e61947a35ea",
     "/TransportSystem/chunk-HKDDYECI.js": "069cc7db8eeee53f2362321e8063d41e585c21dc",
