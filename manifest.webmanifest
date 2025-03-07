@@ -6,14 +6,21 @@
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
-  "screenshots": [
+"screenshots": [
     {
       "src": "assets/screenshots/image.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
+    },
+    {
+      "src": "assets/screenshots/image-mobile.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
-  ],
+],
+
   "icons": [
     {
       "src": "icons/icon-72x72.png",
