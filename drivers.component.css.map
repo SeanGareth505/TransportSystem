@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/drivers/drivers.component.scss"],
+  "sourcesContent": [":host ::ng-deep .pac-container {\r\n    z-index: 100000 !important; /* Ensure it appears above the modal */\r\n    position: absolute !important;\r\n    display: block !important;\r\n}\r\n"],
+  "mappings": ";AAAA,MAAA,UAAA,CAAA;AACI,WAAA;AACA,YAAA;AACA,WAAA;;",
+  "names": []
+}

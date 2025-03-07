@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/thank-you-tracker/thank-you-tracker.component.scss"],
+  "sourcesContent": [".thank-you-container {\r\n    text-align: center;\r\n    padding: 20px;\r\n  }"],
+  "mappings": ";AAAA,CAAA;AACI,cAAA;AACA,WAAA;;",
+  "names": []
+}
