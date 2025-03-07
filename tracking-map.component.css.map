@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/tracking-map/tracking-map.component.scss"],
-  "sourcesContent": ["google-map {\r\n    display: block;\r\n    margin-bottom: 20px;\r\n  }\r\n  \r\n  .driver-list {\r\n    text-align: center;\r\n    margin-top: 10px;\r\n  \r\n    h3 {\r\n      margin-bottom: 10px;\r\n    }\r\n  \r\n    ul {\r\n      list-style: none;\r\n      padding: 0;\r\n    }\r\n  \r\n    li {\r\n      padding: 10px;\r\n      border: 1px solid #ccc;\r\n      margin-bottom: 5px;\r\n      cursor: pointer;\r\n      background-color: #f8f9fa;\r\n      border-radius: 5px;\r\n      transition: background 0.3s;\r\n    }\r\n  \r\n    li:hover {\r\n      background-color: #e9ecef;\r\n    }\r\n  }\r\n  \r\n  button {\r\n    display: block;\r\n    margin: 10px auto;\r\n    background-color: #007bff;\r\n    color: white;\r\n    padding: 10px 20px;\r\n    border: none;\r\n    border-radius: 5px;\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n  }\r\n  \r\n  button:hover {\r\n    background-color: #0056b3;\r\n  }\r\n  "],
-  "mappings": ";AAAA;AACI,WAAA;AACA,iBAAA;;AAGF,CAAA;AACE,cAAA;AACA,cAAA;;AAEA,CAJF,YAIE;AACE,iBAAA;;AAGF,CARF,YAQE;AACE,cAAA;AACA,WAAA;;AAGF,CAbF,YAaE;AACE,WAAA;AACA,UAAA,IAAA,MAAA;AACA,iBAAA;AACA,UAAA;AACA,oBAAA;AACA,iBAAA;AACA,cAAA,WAAA;;AAGF,CAvBF,YAuBE,EAAA;AACE,oBAAA;;AAIJ;AACE,WAAA;AACA,UAAA,KAAA;AACA,oBAAA;AACA,SAAA;AACA,WAAA,KAAA;AACA,UAAA;AACA,iBAAA;AACA,UAAA;AACA,aAAA;;AAGF,MAAA;AACE,oBAAA;;",
-  "names": []
-}
