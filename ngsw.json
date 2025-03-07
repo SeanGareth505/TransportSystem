@@ -1,0 +1,119 @@
+{
+  "configVersion": 1,
+  "timestamp": 1741334712923,
+  "index": "/TransportSystem/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/TransportSystem/chunk-GMWKAPIX.js",
+        "/TransportSystem/chunk-HKDDYECI.js",
+        "/TransportSystem/chunk-JIPAWFCN.js",
+        "/TransportSystem/chunk-L57RXQDO.js",
+        "/TransportSystem/chunk-LROWHXYZ.js",
+        "/TransportSystem/chunk-MPKXLLO3.js",
+        "/TransportSystem/chunk-XGRYAK4A.js",
+        "/TransportSystem/index.html",
+        "/TransportSystem/main-PMPMDBLQ.js",
+        "/TransportSystem/manifest.webmanifest",
+        "/TransportSystem/polyfills-FFHMD2TL.js",
+        "/TransportSystem/service-worker.js",
+        "/TransportSystem/styles-K4AV7NL5.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/TransportSystem/assets/demo/flags/flags_responsive.png",
+        "/TransportSystem/icons/icon-128x128.png",
+        "/TransportSystem/icons/icon-144x144.png",
+        "/TransportSystem/icons/icon-152x152.png",
+        "/TransportSystem/icons/icon-192x192.png",
+        "/TransportSystem/icons/icon-384x384.png",
+        "/TransportSystem/icons/icon-512x512.png",
+        "/TransportSystem/icons/icon-72x72.png",
+        "/TransportSystem/icons/icon-96x96.png",
+        "/TransportSystem/media/flags_responsive-FLFJ4F7K.png",
+        "/TransportSystem/media/primeicons-4GST5W3O.woff2",
+        "/TransportSystem/media/primeicons-DHQU4SEP.svg",
+        "/TransportSystem/media/primeicons-GEFHGEHP.ttf",
+        "/TransportSystem/media/primeicons-P53SE5CV.woff"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "firebase-locations",
+      "patterns": [
+        "\\/drivers\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxAge": 3600000,
+      "timeoutMs": 10000,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/TransportSystem/assets/demo/flags/flags_responsive.png": "c1c4ac0f8369b4aa4b4c22a052e472b8d5f479c6",
+    "/TransportSystem/chunk-GMWKAPIX.js": "d0e6ad63da9221fcc2e3119d3bf90e61947a35ea",
+    "/TransportSystem/chunk-HKDDYECI.js": "069cc7db8eeee53f2362321e8063d41e585c21dc",
+    "/TransportSystem/chunk-JIPAWFCN.js": "70d6d9662dd43110b0fddab4cc75d6d186844714",
+    "/TransportSystem/chunk-L57RXQDO.js": "418326e52fcad511f91fb56029a8c648f11297c8",
+    "/TransportSystem/chunk-LROWHXYZ.js": "4678e953d71ed9f40964e69e06a4ece879dbbb96",
+    "/TransportSystem/chunk-MPKXLLO3.js": "03250f19ddee6ee7ffb191edea1778eefbcf1823",
+    "/TransportSystem/chunk-XGRYAK4A.js": "e6e74c79d9e3143694f8601244243965e111e52b",
+    "/TransportSystem/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/TransportSystem/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/TransportSystem/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/TransportSystem/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/TransportSystem/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/TransportSystem/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/TransportSystem/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/TransportSystem/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/TransportSystem/index.html": "e48c27ddd08cf4a76eab67649f41cc05171a4998",
+    "/TransportSystem/main-PMPMDBLQ.js": "a2b6752590275832fe919a8c82ae21c307c2d368",
+    "/TransportSystem/manifest.webmanifest": "e295bfe3548fa879255dc7a15b2793cbd80e774c",
+    "/TransportSystem/media/flags_responsive-FLFJ4F7K.png": "c1c4ac0f8369b4aa4b4c22a052e472b8d5f479c6",
+    "/TransportSystem/media/primeicons-4GST5W3O.woff2": "837c1279b6af9d297f34fdb43e6fcc9206a79f32",
+    "/TransportSystem/media/primeicons-DHQU4SEP.svg": "a07ae39027c1a780b42fd82fad7575c2924d9d28",
+    "/TransportSystem/media/primeicons-GEFHGEHP.ttf": "3b878ca7e88945a8ec25814810b95367d8977ae6",
+    "/TransportSystem/media/primeicons-P53SE5CV.woff": "361e3af71bb4e515feead2f787348a92a5527158",
+    "/TransportSystem/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/TransportSystem/service-worker.js": "a3a918e16c812aa9dddde8d4087d9f9e52b0a27f",
+    "/TransportSystem/styles-K4AV7NL5.css": "c184dc5b8f2761d4f1c4e7e7d9162e30b978d449"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
