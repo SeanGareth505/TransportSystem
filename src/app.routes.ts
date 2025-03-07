@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { AppLayout } from './app/layout/component/app.layout';
 import { Dashboard } from './app/pages/dashboard/dashboard';
-import { Landing } from './app/pages/landing/landing';
 import { Notfound } from './app/pages/notfound/notfound';
 import { TrackingMapComponent } from './app/pages/tracking-map/tracking-map.component';
+import { TrackConfonfirmationComponent } from './app/pages/track-confonfirmation/track-confonfirmation.component';
 
 export const appRoutes: Routes = [
     {
@@ -14,7 +14,7 @@ export const appRoutes: Routes = [
             { path: 'pages', loadChildren: () => import('./app/pages/pages.routes') }
         ]
     },
-    { path: 'landing', component: Landing },
+    { path: 'track', component: TrackConfonfirmationComponent },
     { path: 'map', component: TrackingMapComponent },
     { path: 'notfound', component: Notfound },
     { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },

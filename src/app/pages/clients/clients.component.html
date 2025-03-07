@@ -69,7 +69,7 @@
     </ng-template>
 
     <ng-template #body let-client>
-        <tr>
+        <tr (click)="selectedClients = [client]">
             <td style="width: 3rem">
                 <p-tableCheckbox [value]="client" />
             </td>
@@ -82,7 +82,8 @@
             </td>
             <td style="min-width: 16rem">{{ client.location }}</td>
             <td>
-                <p-splitButton [model]="splitButtonModel(client)" icon="pi pi-ellipsis-v" class="p-button-rounded p-button-text"></p-splitButton>
+                <p-menu #menu [model]="items" [popup]="true" appendTo="body"/>
+                <p-button (click)="menu.toggle($event)" icon="pi pi-ellipsis-v"/>
             </td>
         </tr>
     </ng-template>
@@ -91,6 +92,8 @@
 <!-- Confirmation Dialog -->
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
 
+
+<p-toast></p-toast>
 <!-- Add Client Modal -->
 <p-dialog header="Add Client" [(visible)]="addClientModalVisible" [modal]="true" [closable]="true" [style]="{width: '50vw'}">
     <add-client-modal (clientAdded)="onClientAdded($event)" (closeDialog)="addClientModalVisible = false"></add-client-modal>

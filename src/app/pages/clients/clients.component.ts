@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AddClientModalComponent } from './add-client-modal/add-client-modal.component';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { MenuModule } from 'primeng/menu';
 
 interface Client {
   idNumber: string;
@@ -38,8 +39,8 @@ interface Client {
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss'],
   standalone: true,
-  imports: [SplitButtonModule, TableModule, DialogModule, RippleModule, SelectModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, TextareaModule, CommonModule, FileUploadModule, DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule, IconFieldModule, InputIconModule, ButtonModule, AddClientModalComponent],
-  providers: [ConfirmationService]
+  imports: [MenuModule, SplitButtonModule, TableModule, DialogModule, RippleModule, SelectModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, TextareaModule, CommonModule, FileUploadModule, DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule, IconFieldModule, InputIconModule, ButtonModule, AddClientModalComponent],
+  providers: [ConfirmationService, MessageService]
 })
 export class ClientsComponent {
   clients: Client[] = [
@@ -49,6 +50,7 @@ export class ClientsComponent {
     { idNumber: '4', name: 'Bob Brown', email: 'bob@example.com', phone: '444-555-6666', status: 'Pending', location: 'Houston' }
   ];
 
+  items: { label: string; items: { label: string; icon: string; command?: () => void; }[]; }[] = [];
   searchText: string = '';
 
   selectedClients: Client[] = [];
@@ -76,6 +78,92 @@ export class ClientsComponent {
       location: ['', Validators.required]
     });
   }
+
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Options',
+        items: [
+          {
+            label: 'Refresh',
+            icon: 'pi pi-refresh',
+          },
+          {
+            label: 'Export',
+            icon: 'pi pi-upload',
+          },
+          {
+            label: 'Copy Track Link',
+            icon: 'pi pi-link',
+            command: () => this.copyTrackLinkForSelectedClient()
+          }
+        ]
+      }
+    ];
+  }
+
+  getMenuItems(client: Client) {
+    return [
+      {
+        label: 'Options',
+        items: [
+          {
+            label: 'Refresh',
+            icon: 'pi pi-refresh'
+          },
+          {
+            label: 'Export',
+            icon: 'pi pi-upload'
+          },
+          {
+            label: 'Copy Track Link',
+            icon: 'pi pi-link',
+            command: () => this.copyTrackLink(client)
+          }
+        ]
+      }
+    ];
+  }
+  
+  copyTrackLink(client: Client) {
+    const baseUrl = window.location.origin;
+    const trackLink = `${baseUrl}/pages/track/${client.phone}`;
+    this.copyToClipboard(trackLink);
+    this.showMessage(`Track link copied for ${client.name}`);
+  }
+  
+  copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      this.showMessage('Link copied successfully!');
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  }
+  
+  showMessage(detail: string) {
+    console.log('detail', detail)
+    this.messageService.add({ severity: 'success', summary: 'Success', detail });
+  }
+  
+  
+
+  copyTrackLinkForSelectedClient() {
+    
+    console.log('123', )
+    if (this.selectedClients.length === 1) {
+      const client = this.selectedClients[0];
+      console.log('client', client)
+      const baseUrl = window.location.origin;
+      console.log('baseUrl', baseUrl)
+      const trackLink = `${baseUrl}/pages/track/${client.phone}`;
+      console.log('trackLink', trackLink)
+      this.copyToClipboard(trackLink);
+      this.showMessage(`Track link copied for ${client.name}`);
+    } else {
+      this.showMessage("Select a single client to generate a tracking link.");
+    }
+  }
+  
 
   get filteredClients() {
     return this.clients.filter(client =>
@@ -159,38 +247,4 @@ export class ClientsComponent {
   onClientAdded(client: Client) {
     this.clients.push(client);
   }
-
-  getTrackLink(client: Client) {
-    const baseUrl = window.location.origin;
-    const trackLink = `${baseUrl}/pages/track/${client.phone}`;
-    this.copyToClipboard(trackLink);
-    this.showMessage('Track link copied to clipboard');
-  }
-
-  copyToClipboard(text: string) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-  }
-
-  showMessage(detail: string) {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail });
-  }
-
-  splitButtonModel(client: Client) {
-    return [
-      { label: 'Edit', icon: 'pi pi-pencil', command: () => this.editClient(client) },
-      { label: 'Delete', icon: 'pi pi-trash', command: () => this.deleteClient(client) }
-    ];
-  }
 }
-
-@Component({
-  selector: 'app-some-standalone',
-  template: `<h1>Standalone Component</h1>`,
-  standalone: true
-})
-export class SomeStandaloneComponent { }
