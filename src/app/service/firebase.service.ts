@@ -16,14 +16,15 @@ export class FirebaseService {
 
   getDrivers(): Observable<any> {
     return new Observable((observer) => {
-      const driversRef = ref(this.db, "/drivers");
-
+      const driversRef = ref(this.db, "/tracking");
+      
       this.ngZone.runOutsideAngular(() => {
-        const unsubscribe = onValue(
-          driversRef,
-          (snapshot) => {
-            this.ngZone.run(() => { 
-              const data = snapshot.val() ?? {};
+          const unsubscribe = onValue(
+              driversRef,
+              (snapshot) => {
+                  this.ngZone.run(() => { 
+                      const data = snapshot.val() ?? {};
+                      console.log('driversRef', data)
               observer.next(data);
             });
           },

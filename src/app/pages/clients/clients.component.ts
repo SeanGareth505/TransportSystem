@@ -20,8 +20,9 @@ import { TextareaModule } from 'primeng/textarea';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { AddClientModalComponent } from './add-client-modal/add-client-modal.component';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 interface Client {
   idNumber: string;
@@ -37,7 +38,7 @@ interface Client {
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss'],
   standalone: true,
-  imports: [TableModule, DialogModule, RippleModule, SelectModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, TextareaModule, CommonModule, FileUploadModule, DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule, IconFieldModule, InputIconModule, ButtonModule, AddClientModalComponent],
+  imports: [SplitButtonModule, TableModule, DialogModule, RippleModule, SelectModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, TextareaModule, CommonModule, FileUploadModule, DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule, IconFieldModule, InputIconModule, ButtonModule, AddClientModalComponent],
   providers: [ConfirmationService]
 })
 export class ClientsComponent {
@@ -66,7 +67,7 @@ export class ClientsComponent {
 
   @ViewChild('dt') dt: Table | undefined;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private messageService: MessageService) {
     this.clientForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -152,14 +153,38 @@ export class ClientsComponent {
   }
 
   showAddClientModal() {
-
-    console.log('`12',)
     this.addClientModalVisible = true;
   }
 
   onClientAdded(client: Client) {
     this.clients.push(client);
-    // this.addClientModalVisible = false;
+  }
+
+  getTrackLink(client: Client) {
+    const baseUrl = window.location.origin;
+    const trackLink = `${baseUrl}/pages/track/${client.phone}`;
+    this.copyToClipboard(trackLink);
+    this.showMessage('Track link copied to clipboard');
+  }
+
+  copyToClipboard(text: string) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  showMessage(detail: string) {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail });
+  }
+
+  splitButtonModel(client: Client) {
+    return [
+      { label: 'Edit', icon: 'pi pi-pencil', command: () => this.editClient(client) },
+      { label: 'Delete', icon: 'pi pi-trash', command: () => this.deleteClient(client) }
+    ];
   }
 }
 
