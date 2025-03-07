@@ -23,11 +23,12 @@ import {
   TableCheckbox,
   TableHeaderCheckbox,
   TableModule,
+  TieredMenu,
   Tooltip,
   TooltipModule,
   TrackingMapComponent,
   Trips
-} from "./chunk-N4SNI4ET.js";
+} from "./chunk-SMFCGN55.js";
 import {
   ActivatedRoute,
   AutoFocus,
@@ -5765,17 +5766,17 @@ var Tag = class _Tag extends BaseComponent {
     });
   }
   containerClass() {
-    let classes12 = "p-tag p-component";
+    let classes13 = "p-tag p-component";
     if (this.severity) {
-      classes12 += ` p-tag-${this.severity}`;
+      classes13 += ` p-tag-${this.severity}`;
     }
     if (this.rounded) {
-      classes12 += " p-tag-rounded";
+      classes13 += " p-tag-rounded";
     }
     if (this.styleClass) {
-      classes12 += ` ${this.styleClass}`;
+      classes13 += ` ${this.styleClass}`;
     }
-    return classes12;
+    return classes13;
   }
   static \u0275fac = /* @__PURE__ */ (() => {
     let \u0275Tag_BaseFactory;
@@ -12932,7 +12933,7 @@ var Dropdown = class _Dropdown extends BaseComponent {
   lastHiddenFocusableElementOnOverlay;
   // @todo to be refactored
   get hostClass() {
-    const classes12 = this._componentStyle.classes.root({
+    const classes13 = this._componentStyle.classes.root({
       instance: this
     }).map((cls) => {
       if (typeof cls === "string") {
@@ -12941,7 +12942,7 @@ var Dropdown = class _Dropdown extends BaseComponent {
         return Object.keys(cls).filter((key) => cls[key]).join(" ");
       }
     }).join(" ");
-    return classes12 + " " + this.styleClass;
+    return classes13 + " " + this.styleClass;
   }
   get hostStyle() {
     return this.style;
@@ -14753,12 +14754,857 @@ var AddClientModalComponent = class _AddClientModalComponent {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AddClientModalComponent, { className: "AddClientModalComponent", filePath: "src/app/pages/clients/add-client-modal/add-client-modal.component.ts", lineNumber: 19 });
 })();
 
+// node_modules/primeng/fesm2022/primeng-splitbutton.mjs
+var _c013 = ["content"];
+var _c114 = ["dropdownicon"];
+var _c211 = ["container"];
+var _c310 = ["defaultbtn"];
+var _c48 = ["menu"];
+function SplitButton_ng_container_2_ng_container_2_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementContainer(0);
+  }
+}
+function SplitButton_ng_container_2_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r2 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementContainerStart(0);
+    \u0275\u0275elementStart(1, "button", 10);
+    \u0275\u0275listener("click", function SplitButton_ng_container_2_Template_button_click_1_listener($event) {
+      \u0275\u0275restoreView(_r2);
+      const ctx_r2 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r2.onDefaultButtonClick($event));
+    });
+    \u0275\u0275template(2, SplitButton_ng_container_2_ng_container_2_Template, 1, 0, "ng-container", 11);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementContainerEnd();
+  }
+  if (rf & 2) {
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275property("severity", ctx_r2.severity)("text", ctx_r2.text)("outlined", ctx_r2.outlined)("size", ctx_r2.size)("icon", ctx_r2.icon)("iconPos", ctx_r2.iconPos)("disabled", ctx_r2.disabled)("pAutoFocus", ctx_r2.autofocus)("pTooltip", ctx_r2.tooltip)("tooltipOptions", ctx_r2.tooltipOptions);
+    \u0275\u0275attribute("tabindex", ctx_r2.tabindex)("aria-label", (ctx_r2.buttonProps == null ? null : ctx_r2.buttonProps["ariaLabel"]) || ctx_r2.label);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngTemplateOutlet", ctx_r2.contentTemplate || ctx_r2._contentTemplate);
+  }
+}
+function SplitButton_ng_template_3_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r4 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "button", 12, 3);
+    \u0275\u0275listener("click", function SplitButton_ng_template_3_Template_button_click_0_listener($event) {
+      \u0275\u0275restoreView(_r4);
+      const ctx_r2 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r2.onDefaultButtonClick($event));
+    });
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275property("severity", ctx_r2.severity)("text", ctx_r2.text)("outlined", ctx_r2.outlined)("size", ctx_r2.size)("icon", ctx_r2.icon)("iconPos", ctx_r2.iconPos)("label", ctx_r2.label)("disabled", ctx_r2.buttonDisabled)("pAutoFocus", ctx_r2.autofocus)("pTooltip", ctx_r2.tooltip)("tooltipOptions", ctx_r2.tooltipOptions);
+    \u0275\u0275attribute("tabindex", ctx_r2.tabindex)("aria-label", ctx_r2.buttonProps == null ? null : ctx_r2.buttonProps["ariaLabel"]);
+  }
+}
+function SplitButton_span_6_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "span");
+  }
+  if (rf & 2) {
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275classMap(ctx_r2.dropdownIcon);
+  }
+}
+function SplitButton_ng_container_7_ChevronDownIcon_1_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275element(0, "ChevronDownIcon");
+  }
+}
+function SplitButton_ng_container_7_2_ng_template_0_Template(rf, ctx) {
+}
+function SplitButton_ng_container_7_2_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275template(0, SplitButton_ng_container_7_2_ng_template_0_Template, 0, 0, "ng-template");
+  }
+}
+function SplitButton_ng_container_7_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementContainerStart(0);
+    \u0275\u0275template(1, SplitButton_ng_container_7_ChevronDownIcon_1_Template, 1, 0, "ChevronDownIcon", 8)(2, SplitButton_ng_container_7_2_Template, 1, 0, null, 11);
+    \u0275\u0275elementContainerEnd();
+  }
+  if (rf & 2) {
+    const ctx_r2 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", !ctx_r2.dropdownIconTemplate && !ctx_r2._dropdownIconTemplate);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngTemplateOutlet", ctx_r2.dropdownIconTemplate || ctx_r2._dropdownIconTemplate);
+  }
+}
+var theme12 = ({
+  dt
+}) => `
+.p-splitbutton {
+    display: inline-flex;
+    position: relative;
+    border-radius: ${dt("splitbutton.border.radius")};
+}
+
+.p-splitbutton-button.p-button {
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    border-right: 0 none;
+}
+
+.p-splitbutton-button.p-button:focus-visible,
+.p-splitbutton-dropdown.p-button:focus-visible {
+    z-index: 1;
+}
+
+.p-splitbutton-button.p-button:not(:disabled):hover,
+.p-splitbutton-button.p-button:not(:disabled):active {
+    border-right: 0 none;
+}
+
+.p-splitbutton-dropdown.p-button {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+}
+
+.p-splitbutton .p-menu {
+    min-width: 100%;
+}
+
+.p-splitbutton-fluid {
+    display: flex;
+}
+
+.p-splitbutton-rounded .p-splitbutton-dropdown {
+    border-start-end-radius: ${dt("splitbutton.rounded.border.radius")};
+    border-end-end-radius: ${dt("splitbutton.rounded.border.radius")};
+}
+
+.p-splitbutton-rounded > .p-splitbutton-button {
+    border-start-start-radius: ${dt("splitbutton.rounded.border.radius")};
+    border-end-start-radius: ${dt("splitbutton.rounded.border.radius")};
+}
+
+.p-splitbutton-raised {
+    box-shadow: ${dt("splitbutton.raised.shadow")};
+}
+`;
+var classes12 = {
+  root: ({
+    props
+  }) => ["p-splitbutton p-component", {
+    "p-splitbutton-raised": props.raised,
+    "p-splitbutton-rounded": props.rounded,
+    "p-splitbutton-fluid": props.fluid
+  }],
+  pcButton: "p-splitbutton-button",
+  pcDropdown: "p-splitbutton-dropdown"
+};
+var SplitButtonStyle = class _SplitButtonStyle extends BaseStyle {
+  name = "splitbutton";
+  theme = theme12;
+  classes = classes12;
+  static \u0275fac = /* @__PURE__ */ (() => {
+    let \u0275SplitButtonStyle_BaseFactory;
+    return function SplitButtonStyle_Factory(__ngFactoryType__) {
+      return (\u0275SplitButtonStyle_BaseFactory || (\u0275SplitButtonStyle_BaseFactory = \u0275\u0275getInheritedFactory(_SplitButtonStyle)))(__ngFactoryType__ || _SplitButtonStyle);
+    };
+  })();
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({
+    token: _SplitButtonStyle,
+    factory: _SplitButtonStyle.\u0275fac
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SplitButtonStyle, [{
+    type: Injectable
+  }], null, null);
+})();
+var SplitButtonClasses;
+(function(SplitButtonClasses2) {
+  SplitButtonClasses2["root"] = "p-splitbutton";
+  SplitButtonClasses2["pcButton"] = "p-splitbutton-button";
+  SplitButtonClasses2["pcDropdown"] = "p-splitbutton-dropdown";
+})(SplitButtonClasses || (SplitButtonClasses = {}));
+var SplitButton = class _SplitButton extends BaseComponent {
+  /**
+   * MenuModel instance to define the overlay items.
+   * @group Props
+   */
+  model;
+  /**
+   * Defines the style of the button.
+   * @group Props
+   */
+  severity;
+  /**
+   * Add a shadow to indicate elevation.
+   * @group Props
+   */
+  raised = false;
+  /**
+   * Add a circular border radius to the button.
+   * @group Props
+   */
+  rounded = false;
+  /**
+   * Add a textual class to the button without a background initially.
+   * @group Props
+   */
+  text = false;
+  /**
+   * Add a border class without a background initially.
+   * @group Props
+   */
+  outlined = false;
+  /**
+   * Defines the size of the button.
+   * @group Props
+   */
+  size = null;
+  /**
+   * Add a plain textual class to the button without a background initially.
+   * @group Props
+   */
+  plain = false;
+  /**
+   * Name of the icon.
+   * @group Props
+   */
+  icon;
+  /**
+   * Position of the icon.
+   * @group Props
+   */
+  iconPos = "left";
+  /**
+   * Text of the button.
+   * @group Props
+   */
+  label;
+  /**
+   * Tooltip for the main button.
+   * @group Props
+   */
+  tooltip;
+  /**
+   * Tooltip options for the main button.
+   * @group Props
+   */
+  tooltipOptions;
+  /**
+   * Inline style of the element.
+   * @group Props
+   */
+  style;
+  /**
+   * Class of the element.
+   * @group Props
+   */
+  styleClass;
+  /**
+   * Inline style of the overlay menu.
+   * @group Props
+   */
+  menuStyle;
+  /**
+   * Style class of the overlay menu.
+   * @group Props
+   */
+  menuStyleClass;
+  /**
+   * Name of the dropdown icon.
+   * @group Props
+   */
+  dropdownIcon;
+  /**
+   *  Target element to attach the overlay, valid values are "body" or a local ng-template variable of another element (note: use binding with brackets for template variables, e.g. [appendTo]="mydiv" for a div element having #mydiv as variable name).
+   * @group Props
+   */
+  appendTo;
+  /**
+   * Indicates the direction of the element.
+   * @group Props
+   */
+  dir;
+  /**
+   * Defines a string that labels the expand button for accessibility.
+   * @group Props
+   */
+  expandAriaLabel;
+  /**
+   * Transition options of the show animation.
+   * @group Props
+   */
+  showTransitionOptions = ".12s cubic-bezier(0, 0, 0.2, 1)";
+  /**
+   * Transition options of the hide animation.
+   * @group Props
+   */
+  hideTransitionOptions = ".1s linear";
+  /**
+   * Button Props
+   */
+  buttonProps;
+  /**
+   * Menu Button Props
+   */
+  menuButtonProps;
+  /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
+  /**
+   * When present, it specifies that the element should be disabled.
+   * @group Props
+   */
+  set disabled(v) {
+    this._disabled = v;
+    this._buttonDisabled = v;
+    this.menuButtonDisabled = v;
+  }
+  get disabled() {
+    return this._disabled;
+  }
+  /**
+   * Index of the element in tabbing order.
+   * @group Props
+   */
+  tabindex;
+  /**
+   * When present, it specifies that the menu button element should be disabled.
+   * @group Props
+   */
+  set menuButtonDisabled(v) {
+    if (this.disabled) {
+      this._menuButtonDisabled = this.disabled;
+    } else this._menuButtonDisabled = v;
+  }
+  get menuButtonDisabled() {
+    return this._menuButtonDisabled;
+  }
+  /**
+   * When present, it specifies that the button element should be disabled.
+   * @group Props
+   */
+  set buttonDisabled(v) {
+    if (this.disabled) {
+      this.buttonDisabled = this.disabled;
+    } else this._buttonDisabled = v;
+  }
+  get buttonDisabled() {
+    return this._buttonDisabled;
+  }
+  /**
+   * Callback to invoke when default command button is clicked.
+   * @param {MouseEvent} event - Mouse event.
+   * @group Emits
+   */
+  onClick = new EventEmitter();
+  /**
+   * Callback to invoke when overlay menu is hidden.
+   * @group Emits
+   */
+  onMenuHide = new EventEmitter();
+  /**
+   * Callback to invoke when overlay menu is shown.
+   * @group Emits
+   */
+  onMenuShow = new EventEmitter();
+  /**
+   * Callback to invoke when dropdown button is clicked.
+   * @param {MouseEvent} event - Mouse event.
+   * @group Emits
+   */
+  onDropdownClick = new EventEmitter();
+  containerViewChild;
+  buttonViewChild;
+  menu;
+  /**
+   * Template of the content.
+   * @group Templates
+   */
+  contentTemplate;
+  /**
+   * Template of the dropdownicon.
+   * @group Templates
+   **/
+  dropdownIconTemplate;
+  templates;
+  ariaId;
+  isExpanded = signal(false);
+  _disabled;
+  _buttonDisabled;
+  _menuButtonDisabled;
+  _componentStyle = inject(SplitButtonStyle);
+  _contentTemplate;
+  _dropdownIconTemplate;
+  ngOnInit() {
+    super.ngOnInit();
+    this.ariaId = uuid("pn_id_");
+  }
+  ngAfterContentInit() {
+    this.templates?.forEach((item) => {
+      switch (item.getType()) {
+        case "content":
+          this._contentTemplate = item.template;
+          break;
+        case "dropdownicon":
+          this._dropdownIconTemplate = item.template;
+          break;
+        default:
+          this._contentTemplate = item.template;
+          break;
+      }
+    });
+  }
+  get containerClass() {
+    const cls = {
+      "p-splitbutton p-component": true,
+      "p-splitbutton-raised": this.raised,
+      "p-splitbutton-rounded": this.rounded,
+      "p-splitbutton-outlined": this.outlined,
+      "p-splitbutton-text": this.text,
+      [`p-splitbutton-${this.size === "small" ? "sm" : "lg"}`]: this.size
+    };
+    return __spreadValues({}, cls);
+  }
+  onDefaultButtonClick(event) {
+    this.onClick.emit(event);
+    this.menu.hide();
+  }
+  onDropdownButtonClick(event) {
+    this.onDropdownClick.emit(event);
+    this.menu?.toggle({
+      currentTarget: this.containerViewChild?.nativeElement,
+      relativeAlign: this.appendTo == null
+    });
+  }
+  onDropdownButtonKeydown(event) {
+    if (event.code === "ArrowDown" || event.code === "ArrowUp") {
+      this.onDropdownButtonClick();
+      event.preventDefault();
+    }
+  }
+  onHide() {
+    this.isExpanded.set(false);
+    this.onMenuHide.emit();
+  }
+  onShow() {
+    this.isExpanded.set(true);
+    this.onMenuShow.emit();
+  }
+  static \u0275fac = /* @__PURE__ */ (() => {
+    let \u0275SplitButton_BaseFactory;
+    return function SplitButton_Factory(__ngFactoryType__) {
+      return (\u0275SplitButton_BaseFactory || (\u0275SplitButton_BaseFactory = \u0275\u0275getInheritedFactory(_SplitButton)))(__ngFactoryType__ || _SplitButton);
+    };
+  })();
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({
+    type: _SplitButton,
+    selectors: [["p-splitbutton"], ["p-splitButton"], ["p-split-button"]],
+    contentQueries: function SplitButton_ContentQueries(rf, ctx, dirIndex) {
+      if (rf & 1) {
+        \u0275\u0275contentQuery(dirIndex, _c013, 4);
+        \u0275\u0275contentQuery(dirIndex, _c114, 4);
+        \u0275\u0275contentQuery(dirIndex, PrimeTemplate, 4);
+      }
+      if (rf & 2) {
+        let _t;
+        \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.contentTemplate = _t.first);
+        \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.dropdownIconTemplate = _t.first);
+        \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.templates = _t);
+      }
+    },
+    viewQuery: function SplitButton_Query(rf, ctx) {
+      if (rf & 1) {
+        \u0275\u0275viewQuery(_c211, 5);
+        \u0275\u0275viewQuery(_c310, 5);
+        \u0275\u0275viewQuery(_c48, 5);
+      }
+      if (rf & 2) {
+        let _t;
+        \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.containerViewChild = _t.first);
+        \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.buttonViewChild = _t.first);
+        \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.menu = _t.first);
+      }
+    },
+    inputs: {
+      model: "model",
+      severity: "severity",
+      raised: [2, "raised", "raised", booleanAttribute],
+      rounded: [2, "rounded", "rounded", booleanAttribute],
+      text: [2, "text", "text", booleanAttribute],
+      outlined: [2, "outlined", "outlined", booleanAttribute],
+      size: "size",
+      plain: [2, "plain", "plain", booleanAttribute],
+      icon: "icon",
+      iconPos: "iconPos",
+      label: "label",
+      tooltip: "tooltip",
+      tooltipOptions: "tooltipOptions",
+      style: "style",
+      styleClass: "styleClass",
+      menuStyle: "menuStyle",
+      menuStyleClass: "menuStyleClass",
+      dropdownIcon: "dropdownIcon",
+      appendTo: "appendTo",
+      dir: "dir",
+      expandAriaLabel: "expandAriaLabel",
+      showTransitionOptions: "showTransitionOptions",
+      hideTransitionOptions: "hideTransitionOptions",
+      buttonProps: "buttonProps",
+      menuButtonProps: "menuButtonProps",
+      autofocus: [2, "autofocus", "autofocus", booleanAttribute],
+      disabled: [2, "disabled", "disabled", booleanAttribute],
+      tabindex: [2, "tabindex", "tabindex", numberAttribute],
+      menuButtonDisabled: "menuButtonDisabled",
+      buttonDisabled: "buttonDisabled"
+    },
+    outputs: {
+      onClick: "onClick",
+      onMenuHide: "onMenuHide",
+      onMenuShow: "onMenuShow",
+      onDropdownClick: "onDropdownClick"
+    },
+    features: [\u0275\u0275ProvidersFeature([SplitButtonStyle]), \u0275\u0275InheritDefinitionFeature],
+    decls: 10,
+    vars: 26,
+    consts: [["container", ""], ["defaultButton", ""], ["menu", ""], ["defaultbtn", ""], [3, "ngClass", "ngStyle"], [4, "ngIf", "ngIfElse"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-splitbutton-dropdown", "p-button-icon-only", 3, "click", "keydown", "size", "severity", "text", "outlined", "disabled"], [3, "class", 4, "ngIf"], [4, "ngIf"], [3, "onHide", "onShow", "id", "popup", "model", "styleClass", "appendTo", "showTransitionOptions", "hideTransitionOptions"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-splitbutton-button", 3, "click", "severity", "text", "outlined", "size", "icon", "iconPos", "disabled", "pAutoFocus", "pTooltip", "tooltipOptions"], [4, "ngTemplateOutlet"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-splitbutton-button", 3, "click", "severity", "text", "outlined", "size", "icon", "iconPos", "label", "disabled", "pAutoFocus", "pTooltip", "tooltipOptions"]],
+    template: function SplitButton_Template(rf, ctx) {
+      if (rf & 1) {
+        const _r1 = \u0275\u0275getCurrentView();
+        \u0275\u0275elementStart(0, "div", 4, 0);
+        \u0275\u0275template(2, SplitButton_ng_container_2_Template, 3, 13, "ng-container", 5)(3, SplitButton_ng_template_3_Template, 2, 13, "ng-template", null, 1, \u0275\u0275templateRefExtractor);
+        \u0275\u0275elementStart(5, "button", 6);
+        \u0275\u0275listener("click", function SplitButton_Template_button_click_5_listener($event) {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.onDropdownButtonClick($event));
+        })("keydown", function SplitButton_Template_button_keydown_5_listener($event) {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.onDropdownButtonKeydown($event));
+        });
+        \u0275\u0275template(6, SplitButton_span_6_Template, 1, 2, "span", 7)(7, SplitButton_ng_container_7_Template, 3, 2, "ng-container", 8);
+        \u0275\u0275elementEnd();
+        \u0275\u0275elementStart(8, "p-tieredMenu", 9, 2);
+        \u0275\u0275listener("onHide", function SplitButton_Template_p_tieredMenu_onHide_8_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.onHide());
+        })("onShow", function SplitButton_Template_p_tieredMenu_onShow_8_listener() {
+          \u0275\u0275restoreView(_r1);
+          return \u0275\u0275resetView(ctx.onShow());
+        });
+        \u0275\u0275elementEnd()();
+      }
+      if (rf & 2) {
+        const defaultButton_r5 = \u0275\u0275reference(4);
+        \u0275\u0275classMap(ctx.styleClass);
+        \u0275\u0275property("ngClass", ctx.containerClass)("ngStyle", ctx.style);
+        \u0275\u0275advance(2);
+        \u0275\u0275property("ngIf", ctx.contentTemplate || ctx._contentTemplate)("ngIfElse", defaultButton_r5);
+        \u0275\u0275advance(3);
+        \u0275\u0275property("size", ctx.size)("severity", ctx.severity)("text", ctx.text)("outlined", ctx.outlined)("disabled", ctx.menuButtonDisabled);
+        \u0275\u0275attribute("aria-label", (ctx.menuButtonProps == null ? null : ctx.menuButtonProps["ariaLabel"]) || ctx.expandAriaLabel)("aria-haspopup", (ctx.menuButtonProps == null ? null : ctx.menuButtonProps["ariaHasPopup"]) || true)("aria-expanded", (ctx.menuButtonProps == null ? null : ctx.menuButtonProps["ariaExpanded"]) || ctx.isExpanded())("aria-controls", (ctx.menuButtonProps == null ? null : ctx.menuButtonProps["ariaControls"]) || ctx.ariaId);
+        \u0275\u0275advance();
+        \u0275\u0275property("ngIf", ctx.dropdownIcon);
+        \u0275\u0275advance();
+        \u0275\u0275property("ngIf", !ctx.dropdownIcon);
+        \u0275\u0275advance();
+        \u0275\u0275styleMap(ctx.menuStyle);
+        \u0275\u0275property("id", ctx.ariaId)("popup", true)("model", ctx.model)("styleClass", ctx.menuStyleClass)("appendTo", ctx.appendTo)("showTransitionOptions", ctx.showTransitionOptions)("hideTransitionOptions", ctx.hideTransitionOptions);
+      }
+    },
+    dependencies: [CommonModule, NgClass, NgIf, NgTemplateOutlet, NgStyle, ButtonDirective, TieredMenu, AutoFocus, ChevronDownIcon, Ripple, TooltipModule, Tooltip, SharedModule],
+    encapsulation: 2,
+    changeDetection: 0
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SplitButton, [{
+    type: Component,
+    args: [{
+      selector: "p-splitbutton, p-splitButton, p-split-button",
+      standalone: true,
+      imports: [CommonModule, ButtonDirective, TieredMenu, AutoFocus, ChevronDownIcon, Ripple, TooltipModule, SharedModule],
+      template: `
+        <div #container [ngClass]="containerClass" [class]="styleClass" [ngStyle]="style">
+            <ng-container *ngIf="contentTemplate || _contentTemplate; else defaultButton">
+                <button
+                    class="p-splitbutton-button"
+                    type="button"
+                    pButton
+                    pRipple
+                    [severity]="severity"
+                    [text]="text"
+                    [outlined]="outlined"
+                    [size]="size"
+                    [icon]="icon"
+                    [iconPos]="iconPos"
+                    (click)="onDefaultButtonClick($event)"
+                    [disabled]="disabled"
+                    [attr.tabindex]="tabindex"
+                    [attr.aria-label]="buttonProps?.['ariaLabel'] || label"
+                    [pAutoFocus]="autofocus"
+                    [pTooltip]="tooltip"
+                    [tooltipOptions]="tooltipOptions"
+                >
+                    <ng-container *ngTemplateOutlet="contentTemplate || _contentTemplate"></ng-container>
+                </button>
+            </ng-container>
+            <ng-template #defaultButton>
+                <button
+                    #defaultbtn
+                    class="p-splitbutton-button"
+                    type="button"
+                    pButton
+                    pRipple
+                    [severity]="severity"
+                    [text]="text"
+                    [outlined]="outlined"
+                    [size]="size"
+                    [icon]="icon"
+                    [iconPos]="iconPos"
+                    [label]="label"
+                    (click)="onDefaultButtonClick($event)"
+                    [disabled]="buttonDisabled"
+                    [attr.tabindex]="tabindex"
+                    [attr.aria-label]="buttonProps?.['ariaLabel']"
+                    [pAutoFocus]="autofocus"
+                    [pTooltip]="tooltip"
+                    [tooltipOptions]="tooltipOptions"
+                ></button>
+            </ng-template>
+            <button
+                type="button"
+                pButton
+                pRipple
+                [size]="size"
+                [severity]="severity"
+                [text]="text"
+                [outlined]="outlined"
+                class="p-splitbutton-dropdown p-button-icon-only"
+                (click)="onDropdownButtonClick($event)"
+                (keydown)="onDropdownButtonKeydown($event)"
+                [disabled]="menuButtonDisabled"
+                [attr.aria-label]="menuButtonProps?.['ariaLabel'] || expandAriaLabel"
+                [attr.aria-haspopup]="menuButtonProps?.['ariaHasPopup'] || true"
+                [attr.aria-expanded]="menuButtonProps?.['ariaExpanded'] || isExpanded()"
+                [attr.aria-controls]="menuButtonProps?.['ariaControls'] || ariaId"
+            >
+                <span *ngIf="dropdownIcon" [class]="dropdownIcon"></span>
+                <ng-container *ngIf="!dropdownIcon">
+                    <ChevronDownIcon *ngIf="!dropdownIconTemplate && !_dropdownIconTemplate" />
+                    <ng-template *ngTemplateOutlet="dropdownIconTemplate || _dropdownIconTemplate"></ng-template>
+                </ng-container>
+            </button>
+            <p-tieredMenu
+                [id]="ariaId"
+                #menu
+                [popup]="true"
+                [model]="model"
+                [style]="menuStyle"
+                [styleClass]="menuStyleClass"
+                [appendTo]="appendTo"
+                [showTransitionOptions]="showTransitionOptions"
+                [hideTransitionOptions]="hideTransitionOptions"
+                (onHide)="onHide()"
+                (onShow)="onShow()"
+            ></p-tieredMenu>
+        </div>
+    `,
+      changeDetection: ChangeDetectionStrategy.OnPush,
+      providers: [SplitButtonStyle],
+      encapsulation: ViewEncapsulation.None
+    }]
+  }], null, {
+    model: [{
+      type: Input
+    }],
+    severity: [{
+      type: Input
+    }],
+    raised: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    rounded: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    text: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    outlined: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    size: [{
+      type: Input
+    }],
+    plain: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    icon: [{
+      type: Input
+    }],
+    iconPos: [{
+      type: Input
+    }],
+    label: [{
+      type: Input
+    }],
+    tooltip: [{
+      type: Input
+    }],
+    tooltipOptions: [{
+      type: Input
+    }],
+    style: [{
+      type: Input
+    }],
+    styleClass: [{
+      type: Input
+    }],
+    menuStyle: [{
+      type: Input
+    }],
+    menuStyleClass: [{
+      type: Input
+    }],
+    dropdownIcon: [{
+      type: Input
+    }],
+    appendTo: [{
+      type: Input
+    }],
+    dir: [{
+      type: Input
+    }],
+    expandAriaLabel: [{
+      type: Input
+    }],
+    showTransitionOptions: [{
+      type: Input
+    }],
+    hideTransitionOptions: [{
+      type: Input
+    }],
+    buttonProps: [{
+      type: Input
+    }],
+    menuButtonProps: [{
+      type: Input
+    }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    disabled: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    tabindex: [{
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
+    }],
+    menuButtonDisabled: [{
+      type: Input,
+      args: ["menuButtonDisabled"]
+    }],
+    buttonDisabled: [{
+      type: Input
+    }],
+    onClick: [{
+      type: Output
+    }],
+    onMenuHide: [{
+      type: Output
+    }],
+    onMenuShow: [{
+      type: Output
+    }],
+    onDropdownClick: [{
+      type: Output
+    }],
+    containerViewChild: [{
+      type: ViewChild,
+      args: ["container"]
+    }],
+    buttonViewChild: [{
+      type: ViewChild,
+      args: ["defaultbtn"]
+    }],
+    menu: [{
+      type: ViewChild,
+      args: ["menu"]
+    }],
+    contentTemplate: [{
+      type: ContentChild,
+      args: ["content", {
+        descendants: false
+      }]
+    }],
+    dropdownIconTemplate: [{
+      type: ContentChild,
+      args: ["dropdownicon", {
+        descendants: false
+      }]
+    }],
+    templates: [{
+      type: ContentChildren,
+      args: [PrimeTemplate]
+    }]
+  });
+})();
+var SplitButtonModule = class _SplitButtonModule {
+  static \u0275fac = function SplitButtonModule_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _SplitButtonModule)();
+  };
+  static \u0275mod = /* @__PURE__ */ \u0275\u0275defineNgModule({
+    type: _SplitButtonModule
+  });
+  static \u0275inj = /* @__PURE__ */ \u0275\u0275defineInjector({
+    imports: [SplitButton, SharedModule, SharedModule]
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SplitButtonModule, [{
+    type: NgModule,
+    args: [{
+      imports: [SplitButton, SharedModule],
+      exports: [SplitButton, SharedModule]
+    }]
+  }], null, null);
+})();
+
 // src/app/pages/clients/clients.component.ts
-var _c013 = ["dt"];
-var _c114 = () => ["name", "email", "phone", "status", "location"];
-var _c211 = () => ({ "min-width": "75rem" });
-var _c310 = () => [10, 25, 50];
-var _c48 = () => ({ width: "450px" });
+var _c014 = ["dt"];
+var _c115 = () => ["name", "email", "phone", "status", "location"];
+var _c212 = () => ({ "min-width": "75rem" });
+var _c311 = () => [10, 25, 50];
+var _c49 = () => ({ width: "450px" });
 var _c57 = () => ({ width: "50vw" });
 var _c67 = () => ({ severity: "secondary" });
 function ClientsComponent_ng_template_1_Template(rf, ctx) {
@@ -14854,7 +15700,6 @@ function ClientsComponent_ng_template_9_Template(rf, ctx) {
 }
 function ClientsComponent_ng_template_11_Template(rf, ctx) {
   if (rf & 1) {
-    const _r6 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "tr")(1, "td", 17);
     \u0275\u0275element(2, "p-tableCheckbox", 31);
     \u0275\u0275elementEnd();
@@ -14876,42 +15721,34 @@ function ClientsComponent_ng_template_11_Template(rf, ctx) {
     \u0275\u0275elementStart(13, "td", 32);
     \u0275\u0275text(14);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(15, "td")(16, "p-button", 34);
-    \u0275\u0275listener("click", function ClientsComponent_ng_template_11_Template_p_button_click_16_listener() {
-      const client_r7 = \u0275\u0275restoreView(_r6).$implicit;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.editClient(client_r7));
-    });
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(17, "p-button", 35);
-    \u0275\u0275listener("click", function ClientsComponent_ng_template_11_Template_p_button_click_17_listener() {
-      const client_r7 = \u0275\u0275restoreView(_r6).$implicit;
-      const ctx_r2 = \u0275\u0275nextContext();
-      return \u0275\u0275resetView(ctx_r2.deleteClient(client_r7));
-    });
-    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(15, "td");
+    \u0275\u0275element(16, "p-splitButton", 34);
+    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
-    const client_r7 = ctx.$implicit;
+    const client_r6 = ctx.$implicit;
     const ctx_r2 = \u0275\u0275nextContext();
     \u0275\u0275advance(2);
-    \u0275\u0275property("value", client_r7);
+    \u0275\u0275property("value", client_r6);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(client_r7.idNumber);
+    \u0275\u0275textInterpolate(client_r6.idNumber);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(client_r7.name);
+    \u0275\u0275textInterpolate(client_r6.name);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(client_r7.email);
+    \u0275\u0275textInterpolate(client_r6.email);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(client_r7.phone);
+    \u0275\u0275textInterpolate(client_r6.phone);
     \u0275\u0275advance(2);
-    \u0275\u0275property("value", client_r7.status)("severity", ctx_r2.getSeverity(client_r7.status));
+    \u0275\u0275property("value", client_r6.status)("severity", ctx_r2.getSeverity(client_r6.status));
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(client_r7.location);
+    \u0275\u0275textInterpolate(client_r6.location);
+    \u0275\u0275advance(2);
+    \u0275\u0275property("model", ctx_r2.splitButtonModel(client_r6));
   }
 }
 var ClientsComponent = class _ClientsComponent {
   fb;
+  messageService;
   clients = [
     { idNumber: "1", name: "John Doe", email: "john@example.com", phone: "123-456-7890", status: "Active", location: "New York" },
     { idNumber: "2", name: "Jane Smith", email: "jane@example.com", phone: "987-654-3210", status: "Inactive", location: "Los Angeles" },
@@ -14932,8 +15769,9 @@ var ClientsComponent = class _ClientsComponent {
   display = false;
   clientForm;
   dt;
-  constructor(fb) {
+  constructor(fb, messageService) {
     this.fb = fb;
+    this.messageService = messageService;
     this.clientForm = this.fb.group({
       name: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
@@ -15000,24 +15838,46 @@ var ClientsComponent = class _ClientsComponent {
     this.showAddClientModal();
   }
   showAddClientModal() {
-    console.log("`12");
     this.addClientModalVisible = true;
   }
   onClientAdded(client) {
     this.clients.push(client);
   }
+  getTrackLink(client) {
+    const baseUrl = window.location.origin;
+    const trackLink = `${baseUrl}/pages/track/${client.phone}`;
+    this.copyToClipboard(trackLink);
+    this.showMessage("Track link copied to clipboard");
+  }
+  copyToClipboard(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+  }
+  showMessage(detail) {
+    this.messageService.add({ severity: "success", summary: "Success", detail });
+  }
+  splitButtonModel(client) {
+    return [
+      { label: "Edit", icon: "pi pi-pencil", command: () => this.editClient(client) },
+      { label: "Delete", icon: "pi pi-trash", command: () => this.deleteClient(client) }
+    ];
+  }
   static \u0275fac = function ClientsComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _ClientsComponent)(\u0275\u0275directiveInject(FormBuilder));
+    return new (__ngFactoryType__ || _ClientsComponent)(\u0275\u0275directiveInject(FormBuilder), \u0275\u0275directiveInject(MessageService));
   };
   static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _ClientsComponent, selectors: [["app-clients"]], viewQuery: function ClientsComponent_Query(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275viewQuery(_c013, 5);
+      \u0275\u0275viewQuery(_c014, 5);
     }
     if (rf & 2) {
       let _t;
       \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.dt = _t.first);
     }
-  }, features: [\u0275\u0275ProvidersFeature([ConfirmationService])], decls: 16, vars: 21, consts: [["start", ""], ["end", ""], ["dt", ""], ["caption", ""], ["header", ""], ["body", ""], ["dataKey", "idNumber", "currentPageReportTemplate", "Showing {first} to {last} of {totalRecords} entries", 3, "selectionChange", "value", "rows", "paginator", "globalFilterFields", "tableStyle", "selection", "rowsPerPageOptions", "rowHover", "showCurrentPageReport"], ["header", "Add Client", 3, "visibleChange", "visible", "modal", "closable"], [3, "clientAdded", "closeDialog"], ["label", "New", "icon", "pi pi-plus", 1, "mr-2", 3, "onClick"], ["severity", "danger", "label", "Delete", "icon", "pi pi-trash", "outlined", "", 3, "onClick", "disabled"], ["mode", "basic", "accept", "image/*", "label", "Import", "chooseLabel", "Import", "auto", "", "customUpload", "", 1, "mr-2", "inline-block", 3, "maxFileSize", "chooseButtonProps"], ["label", "Export", "icon", "pi pi-upload", "severity", "secondary", 3, "onClick"], [1, "flex", "items-center", "justify-between"], [1, "m-0"], ["styleClass", "pi pi-search"], ["pInputText", "", "type", "text", "placeholder", "Search...", 3, "input"], [2, "width", "3rem"], ["pSortableColumn", "idNumber", 2, "min-width", "16rem"], ["field", "idNumber"], ["pSortableColumn", "name", 2, "min-width", "16rem"], ["field", "name"], ["pSortableColumn", "email", 2, "min-width", "16rem"], ["field", "email"], ["pSortableColumn", "phone", 2, "min-width", "16rem"], ["field", "phone"], ["pSortableColumn", "status", 2, "min-width", "16rem"], ["field", "status"], ["pSortableColumn", "location", 2, "min-width", "16rem"], ["field", "location"], [2, "min-width", "12rem"], [3, "value"], [2, "min-width", "16rem"], [3, "value", "severity"], ["icon", "pi pi-pencil", 1, "p-button-rounded", "p-button-text", 3, "click"], ["icon", "pi pi-trash", "severity", "danger", 1, "p-button-rounded", "p-button-text", "p-button-danger", 3, "click"]], template: function ClientsComponent_Template(rf, ctx) {
+  }, features: [\u0275\u0275ProvidersFeature([ConfirmationService])], decls: 16, vars: 21, consts: [["start", ""], ["end", ""], ["dt", ""], ["caption", ""], ["header", ""], ["body", ""], ["dataKey", "idNumber", "currentPageReportTemplate", "Showing {first} to {last} of {totalRecords} entries", 3, "selectionChange", "value", "rows", "paginator", "globalFilterFields", "tableStyle", "selection", "rowsPerPageOptions", "rowHover", "showCurrentPageReport"], ["header", "Add Client", 3, "visibleChange", "visible", "modal", "closable"], [3, "clientAdded", "closeDialog"], ["label", "New", "icon", "pi pi-plus", 1, "mr-2", 3, "onClick"], ["severity", "danger", "label", "Delete", "icon", "pi pi-trash", "outlined", "", 3, "onClick", "disabled"], ["mode", "basic", "accept", "image/*", "label", "Import", "chooseLabel", "Import", "auto", "", "customUpload", "", 1, "mr-2", "inline-block", 3, "maxFileSize", "chooseButtonProps"], ["label", "Export", "icon", "pi pi-upload", "severity", "secondary", 3, "onClick"], [1, "flex", "items-center", "justify-between"], [1, "m-0"], ["styleClass", "pi pi-search"], ["pInputText", "", "type", "text", "placeholder", "Search...", 3, "input"], [2, "width", "3rem"], ["pSortableColumn", "idNumber", 2, "min-width", "16rem"], ["field", "idNumber"], ["pSortableColumn", "name", 2, "min-width", "16rem"], ["field", "name"], ["pSortableColumn", "email", 2, "min-width", "16rem"], ["field", "email"], ["pSortableColumn", "phone", 2, "min-width", "16rem"], ["field", "phone"], ["pSortableColumn", "status", 2, "min-width", "16rem"], ["field", "status"], ["pSortableColumn", "location", 2, "min-width", "16rem"], ["field", "location"], [2, "min-width", "12rem"], [3, "value"], [2, "min-width", "16rem"], [3, "value", "severity"], ["icon", "pi pi-ellipsis-v", 1, "p-button-rounded", "p-button-text", 3, "model"]], template: function ClientsComponent_Template(rf, ctx) {
     if (rf & 1) {
       const _r1 = \u0275\u0275getCurrentView();
       \u0275\u0275elementStart(0, "p-toolbar");
@@ -15029,7 +15889,7 @@ var ClientsComponent = class _ClientsComponent {
         \u0275\u0275twoWayBindingSet(ctx.selectedClients, $event) || (ctx.selectedClients = $event);
         return \u0275\u0275resetView($event);
       });
-      \u0275\u0275template(7, ClientsComponent_ng_template_7_Template, 6, 0, "ng-template", null, 3, \u0275\u0275templateRefExtractor)(9, ClientsComponent_ng_template_9_Template, 23, 0, "ng-template", null, 4, \u0275\u0275templateRefExtractor)(11, ClientsComponent_ng_template_11_Template, 18, 8, "ng-template", null, 5, \u0275\u0275templateRefExtractor);
+      \u0275\u0275template(7, ClientsComponent_ng_template_7_Template, 6, 0, "ng-template", null, 3, \u0275\u0275templateRefExtractor)(9, ClientsComponent_ng_template_9_Template, 23, 0, "ng-template", null, 4, \u0275\u0275templateRefExtractor)(11, ClientsComponent_ng_template_11_Template, 17, 9, "ng-template", null, 5, \u0275\u0275templateRefExtractor);
       \u0275\u0275elementEnd();
       \u0275\u0275element(13, "p-confirmDialog");
       \u0275\u0275elementStart(14, "p-dialog", 7);
@@ -15050,20 +15910,20 @@ var ClientsComponent = class _ClientsComponent {
     }
     if (rf & 2) {
       \u0275\u0275advance(5);
-      \u0275\u0275property("value", ctx.filteredClients)("rows", 10)("paginator", true)("globalFilterFields", \u0275\u0275pureFunction0(16, _c114))("tableStyle", \u0275\u0275pureFunction0(17, _c211));
+      \u0275\u0275property("value", ctx.filteredClients)("rows", 10)("paginator", true)("globalFilterFields", \u0275\u0275pureFunction0(16, _c115))("tableStyle", \u0275\u0275pureFunction0(17, _c212));
       \u0275\u0275twoWayProperty("selection", ctx.selectedClients);
-      \u0275\u0275property("rowsPerPageOptions", \u0275\u0275pureFunction0(18, _c310))("rowHover", true)("showCurrentPageReport", true);
+      \u0275\u0275property("rowsPerPageOptions", \u0275\u0275pureFunction0(18, _c311))("rowHover", true)("showCurrentPageReport", true);
       \u0275\u0275advance(8);
-      \u0275\u0275styleMap(\u0275\u0275pureFunction0(19, _c48));
+      \u0275\u0275styleMap(\u0275\u0275pureFunction0(19, _c49));
       \u0275\u0275advance();
       \u0275\u0275styleMap(\u0275\u0275pureFunction0(20, _c57));
       \u0275\u0275twoWayProperty("visible", ctx.addClientModalVisible);
       \u0275\u0275property("modal", true)("closable", true);
     }
-  }, dependencies: [TableModule, Table, SortableColumn, SortIcon, TableCheckbox, TableHeaderCheckbox, DialogModule, Dialog, RippleModule, SelectModule, ToastModule, ToolbarModule, Toolbar, ConfirmDialogModule, ConfirmDialog, InputTextModule, InputText, TextareaModule, CommonModule, FileUploadModule, FileUpload, DropdownModule, TagModule, Tag, RadioButtonModule, RatingModule, FormsModule, InputNumberModule, IconFieldModule, IconField, InputIconModule, InputIcon, ButtonModule, Button, AddClientModalComponent], encapsulation: 2 });
+  }, dependencies: [SplitButtonModule, SplitButton, TableModule, Table, SortableColumn, SortIcon, TableCheckbox, TableHeaderCheckbox, DialogModule, Dialog, RippleModule, SelectModule, ToastModule, ToolbarModule, Toolbar, ConfirmDialogModule, ConfirmDialog, InputTextModule, InputText, TextareaModule, CommonModule, FileUploadModule, FileUpload, DropdownModule, TagModule, Tag, RadioButtonModule, RatingModule, FormsModule, InputNumberModule, IconFieldModule, IconField, InputIconModule, InputIcon, ButtonModule, Button, AddClientModalComponent], encapsulation: 2 });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(ClientsComponent, { className: "ClientsComponent", filePath: "src/app/pages/clients/clients.component.ts", lineNumber: 43 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(ClientsComponent, { className: "ClientsComponent", filePath: "src/app/pages/clients/clients.component.ts", lineNumber: 44 });
 })();
 var SomeStandaloneComponent = class _SomeStandaloneComponent {
   static \u0275fac = function SomeStandaloneComponent_Factory(__ngFactoryType__) {
@@ -15078,11 +15938,11 @@ var SomeStandaloneComponent = class _SomeStandaloneComponent {
   }, encapsulation: 2 });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(SomeStandaloneComponent, { className: "SomeStandaloneComponent", filePath: "src/app/pages/clients/clients.component.ts", lineNumber: 171 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(SomeStandaloneComponent, { className: "SomeStandaloneComponent", filePath: "src/app/pages/clients/clients.component.ts", lineNumber: 196 });
 })();
 
 // src/app/pages/drivers/add-driver-modal/add-driver-modal.component.ts
-var _c014 = ["locationInput"];
+var _c015 = ["locationInput"];
 var AddDriverModalComponent = class _AddDriverModalComponent {
   fb;
   ngZone;
@@ -15161,7 +16021,7 @@ var AddDriverModalComponent = class _AddDriverModalComponent {
   };
   static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AddDriverModalComponent, selectors: [["add-driver-modal"]], viewQuery: function AddDriverModalComponent_Query(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275viewQuery(_c014, 5);
+      \u0275\u0275viewQuery(_c015, 5);
     }
     if (rf & 2) {
       let _t;
@@ -15216,11 +16076,11 @@ var AddDriverModalComponent = class _AddDriverModalComponent {
 })();
 
 // src/app/pages/drivers/drivers.component.ts
-var _c015 = ["dt"];
-var _c115 = () => ["name", "phone", "baseLocation"];
-var _c212 = () => ({ "min-width": "75rem" });
-var _c311 = () => [10, 25, 50];
-var _c49 = () => ({ width: "450px" });
+var _c016 = ["dt"];
+var _c116 = () => ["name", "phone", "baseLocation"];
+var _c213 = () => ({ "min-width": "75rem" });
+var _c312 = () => [10, 25, 50];
+var _c410 = () => ({ width: "450px" });
 var _c58 = () => ({ width: "50vw", zIndex: 10 });
 var _c68 = () => ({ severity: "secondary" });
 function DriversComponent_ng_template_1_Template(rf, ctx) {
@@ -15452,7 +16312,7 @@ var DriversComponent = class _DriversComponent {
   };
   static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _DriversComponent, selectors: [["app-drivers"]], viewQuery: function DriversComponent_Query(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275viewQuery(_c015, 5);
+      \u0275\u0275viewQuery(_c016, 5);
     }
     if (rf & 2) {
       let _t;
@@ -15491,11 +16351,11 @@ var DriversComponent = class _DriversComponent {
     }
     if (rf & 2) {
       \u0275\u0275advance(5);
-      \u0275\u0275property("value", ctx.filteredDrivers)("rows", 10)("paginator", true)("globalFilterFields", \u0275\u0275pureFunction0(17, _c115))("tableStyle", \u0275\u0275pureFunction0(18, _c212));
+      \u0275\u0275property("value", ctx.filteredDrivers)("rows", 10)("paginator", true)("globalFilterFields", \u0275\u0275pureFunction0(17, _c116))("tableStyle", \u0275\u0275pureFunction0(18, _c213));
       \u0275\u0275twoWayProperty("selection", ctx.selectedDrivers);
-      \u0275\u0275property("rowHover", true)("exportHeader", "customExportHeader")("rowsPerPageOptions", \u0275\u0275pureFunction0(19, _c311))("showCurrentPageReport", true);
+      \u0275\u0275property("rowHover", true)("exportHeader", "customExportHeader")("rowsPerPageOptions", \u0275\u0275pureFunction0(19, _c312))("showCurrentPageReport", true);
       \u0275\u0275advance(8);
-      \u0275\u0275styleMap(\u0275\u0275pureFunction0(20, _c49));
+      \u0275\u0275styleMap(\u0275\u0275pureFunction0(20, _c410));
       \u0275\u0275advance();
       \u0275\u0275styleMap(\u0275\u0275pureFunction0(21, _c58));
       \u0275\u0275twoWayProperty("visible", ctx.addDriverModalVisible);
@@ -15597,4 +16457,4 @@ var pages_routes_default = [
 export {
   pages_routes_default as default
 };
-//# sourceMappingURL=chunk-3T3B5GYN.js.map
+//# sourceMappingURL=chunk-2Z7BLU3R.js.map
