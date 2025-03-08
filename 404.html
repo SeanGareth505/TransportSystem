@@ -30,6 +30,7 @@
 
         // Capture "beforeinstallprompt" event to allow manual installation
         window.addEventListener("beforeinstallprompt", (event) => {
+            console.log("beforeinstallprompt event captured"); // Debug log
             event.preventDefault(); 
             deferredPrompt = event;
             console.log("✅ Install prompt captured.");
@@ -37,9 +38,11 @@
 
         // Function to manually trigger installation
         function installPWA() {
+            console.log("installPWA function called"); // Debug log
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then(choiceResult => {
+                    console.log("User choice result: ", choiceResult); // Debug log
                     if (choiceResult.outcome === 'accepted') {
                         console.log('🎉 PWA installed successfully!');
                     } else {
@@ -47,6 +50,8 @@
                     }
                     deferredPrompt = null;
                 });
+            } else {
+                console.log("No deferredPrompt available"); // Debug log
             }
         }
 
