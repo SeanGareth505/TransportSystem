@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8"/>
     <title>StaffTransport</title>
-    <base href="/"/>
+    <base href="./"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://primefaces.org"/>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://primefaces.org/cdn/primeng/images/favicon.png"/>
-    
+
     <!-- Fonts -->
     <link href="https://fonts.cdnfonts.com/css/lato" rel="stylesheet"/>
 
@@ -28,37 +28,35 @@
     <script>
         let deferredPrompt;
 
-        // Capture "beforeinstallprompt" event to allow manual installation
         window.addEventListener("beforeinstallprompt", (event) => {
-            console.log("beforeinstallprompt event captured"); // Debug log
-            event.preventDefault(); 
-            deferredPrompt = event;
             console.log("✅ Install prompt captured.");
+            event.preventDefault();
+            deferredPrompt = event;
+            document.getElementById("installButton").style.display = "block";
         });
 
-        // Function to manually trigger installation
         function installPWA() {
-            console.log("installPWA function called"); // Debug log
+            console.log("installPWA function called");
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then(choiceResult => {
-                    console.log("User choice result: ", choiceResult); // Debug log
+                    console.log("User choice result: ", choiceResult);
                     if (choiceResult.outcome === 'accepted') {
                         console.log('🎉 PWA installed successfully!');
                     } else {
                         console.log('❌ PWA installation dismissed.');
                     }
                     deferredPrompt = null;
+                    document.getElementById("installButton").style.display = "none";
                 });
             } else {
-                console.log("No deferredPrompt available"); // Debug log
+                console.log("No deferredPrompt available");
             }
         }
 
-        // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/docs/browser/ngsw-worker.js')
+                navigator.serviceWorker.register('ngsw-worker.js')
                     .then(reg => console.log('✅ Service Worker Registered:', reg))
                     .catch(err => console.error('❌ Service Worker Registration Failed:', err));
             });
@@ -67,8 +65,8 @@
         }
     </script>
 
-    <!-- Optional: Install Button (For Debugging) -->
-    <button onclick="installPWA()" style="position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    <!-- Install Button (Initially Hidden) -->
+    <button id="installButton" onclick="installPWA()" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 5px; cursor: pointer;">
         Install App
     </button>
 </body>

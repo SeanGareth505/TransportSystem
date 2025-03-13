@@ -47,7 +47,7 @@ function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker
-        .register('/ngsw-worker.js')
+        .register('ngsw-worker.js')
         .then((registration) => {
           console.log("✅ Service Worker Registered:", registration);
         })

@@ -18,9 +18,10 @@
                     "builder": "@angular-devkit/build-angular:application",
                     "options": {
                         "outputPath": "docs",
+                        "serviceWorker": "ngsw-config.json",
                         "index": "src/index.html",
                         "browser": "src/main.ts",
-                        "baseHref": "/TransportSystem/",
+                        "baseHref": "/",
                         "polyfills": [
                             "zone.js"
                         ],
@@ -56,7 +57,7 @@
                             ],
                             "outputHashing": "all",
                             "serviceWorker": "ngsw-config.json",
-                            "baseHref": "/TransportSystem/"
+                            "baseHref": "/"
                         },
                         "development": {
                             "optimization": false,
