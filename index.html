@@ -5,7 +5,7 @@
     <title>StaffTransport</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://primefaces.org">
 
@@ -29,7 +29,7 @@
         let deferredPrompt;
 
         window.addEventListener("beforeinstallprompt", (event) => {
-            console.log("✅ beforeinstallprompt event captured.");
+            console.log("✅ Install prompt captured.");
             event.preventDefault();
             deferredPrompt = event;
             document.getElementById("installButton").style.display = "block";
@@ -40,33 +40,32 @@
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then(choiceResult => {
-                    console.log("User choice:", choiceResult);
-                    if (choiceResult.outcome === "accepted") {
-                        console.log("🎉 PWA installed successfully!");
+                    console.log("User choice result: ", choiceResult);
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('🎉 PWA installed successfully!');
                     } else {
-                        console.log("❌ PWA installation dismissed.");
+                        console.log('❌ PWA installation dismissed.');
                     }
                     deferredPrompt = null;
                     document.getElementById("installButton").style.display = "none";
                 });
             } else {
-                console.log("❌ No install prompt available.");
+                console.log("No deferredPrompt available");
             }
         }
 
-        // Register Service Worker
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("ngsw-worker.js")
-                    .then(reg => console.log("✅ Service Worker Registered:", reg))
-                    .catch(err => console.error("❌ Service Worker Registration Failed:", err));
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('ngsw-worker.js')
+                    .then(reg => console.log('✅ Service Worker Registered:', reg))
+                    .catch(err => console.error('❌ Service Worker Registration Failed:', err));
             });
         } else {
             console.warn("⚠️ Service Worker is not supported in this browser.");
         }
     </script>
 
-    <!-- Install Button (Visible only when prompt is available) -->
+    <!-- Install Button (Initially Hidden) -->
     <button id="installButton" onclick="installPWA()" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 5px; cursor: pointer;">
         Install App
     </button>

@@ -1,12 +1,14 @@
 {
   "name": "sakai-ng",
   "short_name": "sakai-ng",
+  "description": "A modern transport management system with PWA support.",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-"screenshots": [
+  "scope": "./",
+  "start_url": "./index.html",
+  "prefer_related_applications": false,
+  "screenshots": [
     {
       "src": "assets/screenshots/image.png",
       "sizes": "1280x720",
@@ -19,8 +21,7 @@
       "type": "image/png",
       "form_factor": "narrow"
     }
-],
-
+  ],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
