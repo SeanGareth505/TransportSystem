@@ -57,7 +57,7 @@
                             ],
                             "outputHashing": "all",
                             "serviceWorker": "ngsw-config.json",
-                            "baseHref": "/"
+                            "baseHref": "/TransportSystem/"
                         },
                         "development": {
                             "optimization": false,

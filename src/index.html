@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>StaffTransport</title>
-    <base href="./"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
+    <base href="./" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Preconnect for faster loading -->
-    <link rel="preconnect" href="https://primefaces.org"/>
+    <link rel="preconnect" href="https://primefaces.org" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://primefaces.org/cdn/primeng/images/favicon.png"/>
+    <link rel="icon" type="image/x-icon" href="https://primefaces.org/cdn/primeng/images/favicon.png" />
 
     <!-- Fonts -->
-    <link href="https://fonts.cdnfonts.com/css/lato" rel="stylesheet"/>
+    <link href="https://fonts.cdnfonts.com/css/lato" rel="stylesheet" />
 
-    <!-- PWA Configuration -->
-    <link rel="manifest" href="manifest.webmanifest">
+    <!-- Ensure the manifest link is correct -->
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    <!-- Ensure the service worker is registered -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/ngsw-worker.js')
+                    .then(reg => console.log('✅ Service Worker Registered:', reg))
+                    .catch(err => console.error('❌ Service Worker Registration Failed:', err));
+            });
+        } else {
+            console.warn('⚠️ Service Worker is not supported in this browser.');
+        }
+    </script>
+
     <meta name="theme-color" content="#1976d2">
 </head>
 
@@ -24,7 +39,6 @@
     <app-root></app-root>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
 
-    <!-- PWA Install Script -->
     <script>
         let deferredPrompt;
 
@@ -35,39 +49,34 @@
             document.getElementById("installButton").style.display = "block";
         });
 
+
         function installPWA() {
-            console.log("installPWA function called");
+            console.log("🔄 installPWA function called");
+
             if (deferredPrompt) {
-                deferredPrompt.prompt();
+                deferredPrompt.prompt();  // Show install prompt
                 deferredPrompt.userChoice.then(choiceResult => {
-                    console.log("User choice result: ", choiceResult);
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('🎉 PWA installed successfully!');
+                    if (choiceResult.outcome === "accepted") {
+                        console.log("🎉 PWA installed successfully!");
                     } else {
-                        console.log('❌ PWA installation dismissed.');
+                        console.log("❌ PWA installation dismissed.");
                     }
-                    deferredPrompt = null;
+                    deferredPrompt = null; // Clear the prompt
                     document.getElementById("installButton").style.display = "none";
                 });
             } else {
-                console.log("No deferredPrompt available");
+                console.warn("⚠️ No valid install prompt available.");
             }
         }
 
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('ngsw-worker.js')
-                    .then(reg => console.log('✅ Service Worker Registered:', reg))
-                    .catch(err => console.error('❌ Service Worker Registration Failed:', err));
-            });
-        } else {
-            console.warn("⚠️ Service Worker is not supported in this browser.");
-        }
     </script>
 
-    <!-- Install Button (Initially Hidden) -->
-    <button id="installButton" onclick="installPWA()" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    <button id="installButton" onclick="installPWA()"
+        style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px; background: #1976d2; color: white; border: none; border-radius: 5px; cursor: pointer;">
         Install App
     </button>
+
+
 </body>
+
 </html>
