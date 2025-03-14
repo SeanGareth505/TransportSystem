@@ -77,7 +77,7 @@
                     await new Promise(resolve => setTimeout(resolve, 1000));
 
                     const registration = await navigator.serviceWorker.register('./ngsw-worker.js', {
-                        scope: './',
+                        scope: '/TransportSystem/',
                         updateViaCache: 'none'
                     });
                     console.log('✅ Service Worker registered:', registration);

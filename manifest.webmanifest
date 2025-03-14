@@ -6,14 +6,14 @@
     "background_color": "#ffffff",
     "display": "standalone",
     "orientation": "any",
-    "scope": ".",
-    "start_url": "./index.html",
+    "scope": "/TransportSystem/",
+    "start_url": "/TransportSystem/",
     "id": "/TransportSystem/",
     "launch_handler": {
         "client_mode": ["navigate-existing", "auto"]
     },
     "categories": ["utilities", "productivity"],
-    "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+    "display_override": ["standalone"],
     "dir": "ltr",
     "lang": "en",
     "prefer_related_applications": false,
@@ -98,7 +98,7 @@
     "shortcuts": [
         {
             "name": "Home Dashboard",
-            "url": "./",
+            "url": "/TransportSystem/",
             "icons": [
                 {
                     "src": "assets/icons/icon-96x96.png",
