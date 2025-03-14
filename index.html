@@ -33,21 +33,31 @@
     <script>
         // Function to show install instructions for Opera
         function showOperaInstructions() {
+            const isOperaGX = navigator.userAgent.includes('GX');
             const instructionsDiv = document.createElement('div');
             instructionsDiv.id = 'operaInstructions';
             instructionsDiv.innerHTML = `
                 <div style="position: fixed; bottom: 80px; right: 20px; background: white; 
-                    padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
-                    max-width: 300px; font-family: 'Lato', sans-serif; z-index: 9998;">
-                    <p style="margin: 0 0 10px 0;">To install this app in Opera:</p>
+                    padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+                    max-width: 350px; font-family: 'Lato', sans-serif; z-index: 9998;">
+                    <p style="margin: 0 0 10px 0; font-weight: bold;">To install this app in Opera:</p>
                     <ol style="margin: 0; padding-left: 20px;">
-                        <li>Click the Opera menu (≡) in the top right</li>
-                        <li>Look for "Install as app" or "Apps"</li>
-                        <li>Click "Install" when prompted</li>
+                        ${isOperaGX ? `
+                            <li>Click the "..." menu in the top right</li>
+                            <li>Go to "Apps" in the menu</li>
+                            <li>Click "Install as app" for StaffTransport</li>
+                        ` : `
+                            <li>Click the "..." menu in the address bar</li>
+                            <li>Select "Go to apps"</li>
+                            <li>Click "Install StaffTransport"</li>
+                        `}
                     </ol>
+                    <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee;">
+                        <small style="color: #666;">Tip: You can also find this in the main menu (≡) under "Apps"</small>
+                    </div>
                     <button onclick="this.parentElement.remove()" 
-                        style="position: absolute; top: 5px; right: 5px; background: none; 
-                        border: none; cursor: pointer; font-size: 16px;">×</button>
+                        style="position: absolute; top: 10px; right: 10px; background: none; 
+                        border: none; cursor: pointer; font-size: 18px; color: #666;">×</button>
                 </div>`;
             document.body.appendChild(instructionsDiv);
         }
