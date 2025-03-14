@@ -31,13 +31,25 @@
 
     <!-- Service Worker Registration -->
     <script>
-        // Function to show install button
-        function showInstallButton() {
-            const installButton = document.getElementById('installButton');
-            if (installButton) {
-                installButton.style.display = 'block';
-                console.log('📱 Install button shown');
-            }
+        // Function to show install instructions for Opera
+        function showOperaInstructions() {
+            const instructionsDiv = document.createElement('div');
+            instructionsDiv.id = 'operaInstructions';
+            instructionsDiv.innerHTML = `
+                <div style="position: fixed; bottom: 80px; right: 20px; background: white; 
+                    padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+                    max-width: 300px; font-family: 'Lato', sans-serif; z-index: 9998;">
+                    <p style="margin: 0 0 10px 0;">To install this app in Opera:</p>
+                    <ol style="margin: 0; padding-left: 20px;">
+                        <li>Click the install icon (+ or ⊕) in the address bar</li>
+                        <li>Or click the Opera menu (≡)</li>
+                        <li>Select "Install as app"</li>
+                    </ol>
+                    <button onclick="this.parentElement.remove()" 
+                        style="position: absolute; top: 5px; right: 5px; background: none; 
+                        border: none; cursor: pointer; font-size: 16px;">×</button>
+                </div>`;
+            document.body.appendChild(instructionsDiv);
         }
 
         // Function to check if browser is Opera
@@ -73,9 +85,9 @@
                         console.log('✨ PWA is already installed');
                     } else {
                         console.log('📱 PWA can be installed');
-                        // Show install button for Opera immediately
+                        // Show Opera instructions if using Opera
                         if (isOpera()) {
-                            showInstallButton();
+                            showOperaInstructions();
                         }
                     }
                 } catch (err) {
@@ -92,23 +104,29 @@
             console.log('🎯 Install prompt event captured:', event);
             event.preventDefault();
             window.deferredPrompt = event;
-            showInstallButton();
+            if (!isOpera()) {
+                const installButton = document.getElementById('installButton');
+                if (installButton) {
+                    installButton.style.display = 'block';
+                }
+            }
         });
 
         // Debug logging for appinstalled
         window.addEventListener('appinstalled', (event) => {
             console.log('🎉 PWA was installed', event);
             window.deferredPrompt = null;
+            // Hide both button and instructions
             const installButton = document.getElementById('installButton');
-            if (installButton) {
-                installButton.style.display = 'none';
-            }
+            const instructions = document.getElementById('operaInstructions');
+            if (installButton) installButton.style.display = 'none';
+            if (instructions) instructions.remove();
         });
 
-        // Show install button for Opera on DOMContentLoaded
+        // Show Opera instructions on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             if (isOpera()) {
-                showInstallButton();
+                showOperaInstructions();
             }
         });
     </script>
@@ -118,7 +136,7 @@
     <app-root></app-root>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
 
-    <!-- Install PWA Button -->
+    <!-- Install PWA Button (for non-Opera browsers) -->
     <script>
         function installPWA() {
             console.log('🔄 Install button clicked');
@@ -126,11 +144,6 @@
 
             if (!deferredPrompt) {
                 console.warn('⚠️ No installation prompt available');
-                // Fallback for Opera
-                if (isOpera()) {
-                    console.log('🎭 Opening Opera shortcut creation');
-                    window.location.href = 'opera://create-browser-shortcut';
-                }
                 return;
             }
 
@@ -151,6 +164,7 @@
         }
     </script>
 
+    <!-- Install button (only shown for non-Opera browsers) -->
     <button id="installButton" onclick="installPWA()" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; 
         background: #1976d2; color: white; border: none; border-radius: 8px; 
         cursor: pointer; z-index: 9999; font-family: 'Lato', sans-serif; 
