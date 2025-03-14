@@ -6,6 +6,15 @@
     <title>StaffTransport</title>
     <base href="/TransportSystem/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="StaffTransport">
+    <meta name="apple-mobile-web-app-title" content="StaffTransport">
+    <meta name="msapplication-starturl" content="/TransportSystem/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://primefaces.org">
@@ -17,7 +26,7 @@
     <link href="https://fonts.cdnfonts.com/css/lato" rel="stylesheet">
 
     <!-- PWA manifest -->
-    <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials">
+    <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials">
     <meta name="theme-color" content="#1976d2">
 
     <!-- Service Worker Registration -->
@@ -26,11 +35,23 @@
             window.addEventListener('load', async () => {
                 try {
                     console.log('🔄 Registering service worker...');
-                    const registration = await navigator.serviceWorker.register('ngsw-worker.js', { scope: '/TransportSystem/' });
+                    // Wait a bit before registering the service worker
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    const registration = await navigator.serviceWorker.register('./ngsw-worker.js', {
+                        scope: '/TransportSystem/',
+                        updateViaCache: 'none'
+                    });
                     console.log('✅ Service Worker registered:', registration);
 
+                    // Force update check
+                    registration.update();
+
                     // Check if the PWA is already installed
-                    const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+                    const isInstalled = window.matchMedia('(display-mode: standalone)').matches
+                        || window.matchMedia('(display-mode: fullscreen)').matches
+                        || window.matchMedia('(display-mode: minimal-ui)').matches;
+
                     if (isInstalled) {
                         console.log('✨ PWA is already installed');
                     } else {
@@ -38,6 +59,7 @@
                     }
                 } catch (err) {
                     console.error('❌ Service Worker Registration Failed:', err);
+                    console.error('Error details:', err.message);
                 }
             });
         } else {
@@ -80,6 +102,10 @@
 
             if (!deferredPrompt) {
                 console.warn('⚠️ No installation prompt available');
+                // Fallback for Opera
+                if (navigator.userAgent.includes('OPR/')) {
+                    window.location.href = 'opera://create-browser-shortcut';
+                }
                 return;
             }
 
@@ -97,6 +123,14 @@
                     installButton.style.display = 'none';
                 }
             });
+        }
+
+        // Show install button for Opera users
+        if (navigator.userAgent.includes('OPR/')) {
+            const installButton = document.getElementById('installButton');
+            if (installButton) {
+                installButton.style.display = 'block';
+            }
         }
     </script>
 

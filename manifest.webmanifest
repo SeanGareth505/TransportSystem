@@ -13,6 +13,10 @@
         "client_mode": ["navigate-existing", "auto"]
     },
     "categories": ["utilities", "productivity"],
+    "display_override": ["standalone", "minimal-ui", "browser"],
+    "dir": "ltr",
+    "lang": "en",
+    "prefer_related_applications": false,
     "icons": [
         {
             "src": "/TransportSystem/assets/icons/icon-72x72.png",
@@ -103,6 +107,5 @@
                 }
             ]
         }
-    ],
-    "prefer_related_applications": false
+    ]
 }
